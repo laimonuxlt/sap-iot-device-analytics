@@ -1,0 +1,140 @@
+-- ============================================================
+-- V_DEVICE_HEALTH.hdbview   (deploy path: /db/src/views/)
+-- Model rule: each device records exactly ONE metric
+-- (Temperature, Humidity or Pressure).
+-- Grain: one row per device (its latest reading), driven from
+-- DIM_DEVICE. A device with no reading at all appears once with
+-- NULL metric and is flagged OFFLINE.
+-- OFFLINE = latest reading older than 4 hours (14400 s) or none.
+-- NEVER REPORTED = device has no reading at all
+-- Reference time NOW_TS = latest reading in the data (suits static
+-- sample data). In production use CURRENT_UTCTIMESTAMP instead.
+-- SEVERITY (higher = worse):
+--   6 DEVICE OFFLINE   5 NEVER REPORTED   4 FAILED READING (NULL)
+--   3 CRITICAL         2 WARNING          1 HEALTHY
+-- MAINTENANCE_ALERT = 'YES' for every severity > 1, otherwise 'NO'.
+-- ============================================================
+VIEW "V_DEVICE_HEALTH" AS 
+WITH AS_OF AS (
+  SELECT 
+--1. AS_OF: the reference time
+    --This step takes the largest one in FACT_TELEMETRY,
+    -- turns it into text, and parses it into a real timestamp (2026-10-18 14:30).
+    --The result is one row with one value, “now”,
+    -- defined as the newest reading in the data.
+    TO_TIMESTAMP(TO_VARCHAR(MAX("DATETIME_ID")), 'YYYYMMDDHH24MI') AS "NOW_TS"
+  FROM "FACT_TELEMETRY"
+),
+--2. LATEST_READINGS: the newest reading per device
+LATEST_READINGS AS (
+  SELECT f."DEVICE_ID",
+    f."SITE_ID",
+    f."DATETIME_ID",
+    f."METRIC_VALUE",
+    m."METRIC_NAME",
+    m."UNIT_OF_MEASURE",
+    m."MIN_NORMAL",
+    m."MAX_NORMAL",
+    m."CRITICAL_LOW",
+    m."CRITICAL_HIGH",
+    --The window function numbers each device’s readings, newest first
+    --The row with RN = 1 is the latest reading. READING_ID DESC breaks ties if two readings share a minute.
+    --The inner join to DIM_METRIC attaches the metric name, unit, and the normal and critical limits to each reading.
+    --Readings with an undefined metric are dropped here.
+    ROW_NUMBER() OVER (
+      PARTITION BY f."DEVICE_ID"
+      ORDER BY f."DATETIME_ID" DESC,
+        f."READING_ID" DESC
+    ) AS "RN"
+  FROM "FACT_TELEMETRY" f
+    INNER JOIN "DIM_METRIC" m
+ ON f."METRIC_ID" = m."METRIC_ID"
+),
+--3. BASE: one row per device
+BASE AS (
+  SELECT d."DEVICE_ID",
+    d."DEVICE_NAME",
+    d."DEVICE_TYPE",
+    --takes the site from the reading, falling back to the device’s own site.
+    COALESCE(r."SITE_ID", d."SITE_ID") AS "SITE_ID",
+    r."METRIC_NAME",
+    r."METRIC_VALUE",
+    r."UNIT_OF_MEASURE",
+    r."MIN_NORMAL",
+    r."MAX_NORMAL",
+    r."CRITICAL_LOW",
+    r."CRITICAL_HIGH",
+    --Converts the reading’s DATETIME_ID to a timestamp (LAST_RECORDED_DATETIME) and carries NOW_TS along.
+    TO_TIMESTAMP(TO_VARCHAR(r."DATETIME_ID"), 'YYYYMMDDHH24MI') AS "LAST_RECORDED_DATETIME",
+    a."NOW_TS" 
+--Starts from DIM_DEVICE, so every device appears, even ones that never sent data.
+  FROM "DIM_DEVICE" d 
+--left-joins the latest reading (RN = 1). A device with no readings gets NULLs for the value, metric and time.
+    LEFT OUTER JOIN LATEST_READINGS r
+ ON d."DEVICE_ID" = r."DEVICE_ID"
+    AND r."RN" = 1
+    CROSS JOIN AS_OF a
+),
+--EVALUATED: the health decision
+EVALUATED AS (
+  SELECT b.*,
+    CASE
+-- silent > 4h. Stopped reporting
+      WHEN SECONDS_BETWEEN(b."LAST_RECORDED_DATETIME", b."NOW_TS") > 14400 THEN 6 
+--never reported. Device exist in DIM_DEVICE, but no reading exist
+      WHEN b."LAST_RECORDED_DATETIME" IS NULL THEN 5 
+-- failed reading. Reporting but sensor failed
+      WHEN b."METRIC_VALUE" IS NULL THEN 4 
+-- critical
+      WHEN b."METRIC_VALUE" <= b."CRITICAL_LOW"
+      OR b."METRIC_VALUE" >= b."CRITICAL_HIGH" THEN 3
+      WHEN b."METRIC_VALUE" < b."MIN_NORMAL"
+      OR b."METRIC_VALUE" > b."MAX_NORMAL" THEN 2 
+-- healthy
+      ELSE 1
+    END AS "SEVERITY"
+  FROM BASE b
+)
+SELECT e."DEVICE_ID",
+  e."DEVICE_NAME",
+  e."DEVICE_TYPE",
+  e."SITE_ID",
+  st."SITE_NAME",
+  st."SITE_ADDRESS",
+  st."CITY",
+  st."COUNTRY",
+  e."METRIC_NAME",
+  e."METRIC_VALUE",
+  e."UNIT_OF_MEASURE",
+  TO_SECONDDATE(e."LAST_RECORDED_DATETIME") AS "LAST_RECORDED_DATETIME",
+  e."SEVERITY",
+  CASE
+    e."SEVERITY"
+    WHEN 6 THEN 'DEVICE OFFLINE'
+    WHEN 5 THEN 'NEVER REPORTED'
+    WHEN 4 THEN 'FAILED READING'
+    WHEN 3 THEN 'CRITICAL - OUT OF BOUNDS'
+    WHEN 2 THEN 'WARNING - ANOMALY DETECTED'
+    ELSE 'HEALTHY'
+  END AS "HEALTH_INDICATOR",
+  CASE
+    WHEN e."SEVERITY" > 1 THEN 'YES'
+    ELSE 'NO'
+  END AS "MAINTENANCE_ALERT",
+  CASE
+    WHEN e."SEVERITY" = 6 THEN 'No data for more than 4 hours'
+    WHEN e."SEVERITY" = 5 THEN 'No reading recorded'
+    WHEN e."SEVERITY" = 4 THEN 'Failed reading (NULL value)'
+    WHEN e."METRIC_VALUE" < e."MIN_NORMAL" THEN CASE
+      WHEN e."SEVERITY" = 3 THEN 'Critical: '
+      ELSE ''
+    END || 'Below normal by ' || TO_VARCHAR(ROUND(e."MIN_NORMAL" - e."METRIC_VALUE", 3)) || ' ' || e."UNIT_OF_MEASURE"
+    WHEN e."METRIC_VALUE" > e."MAX_NORMAL" THEN CASE
+      WHEN e."SEVERITY" = 3 THEN 'Critical: '
+      ELSE ''
+    END || 'Above normal by ' || TO_VARCHAR(ROUND(e."METRIC_VALUE" - e."MAX_NORMAL", 3)) || ' ' || e."UNIT_OF_MEASURE"
+    ELSE 'Within normal range'
+  END AS "ANOMALY_DETAIL"
+FROM EVALUATED e
+  LEFT OUTER JOIN "DIM_SITE" st
+ ON e."SITE_ID" = st."SITE_ID"

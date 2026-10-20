@@ -1,0 +1,21 @@
+{
+  "format_version": 1,
+  "imports": [
+    {
+      "target_table": "FACT_TELEMETRY",
+      "source_data": {
+        "data_type": "CSV",
+        "file_name": "FACT_TELEMETRY_SAMPLE_02.csv",
+        "has_header": true
+      },
+      "import_columns": [
+        "READING_ID",
+        "DATETIME_ID",
+        "DEVICE_ID",
+        "METRIC_ID",
+        "SITE_ID",       
+        "METRIC_VALUE"
+      ]
+    }
+  ]
+}

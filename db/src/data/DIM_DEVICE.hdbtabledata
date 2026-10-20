@@ -1,0 +1,19 @@
+{
+  "format_version": 1,
+  "imports": [
+    {
+      "target_table": "DIM_DEVICE",
+      "source_data": {
+        "data_type": "CSV",
+        "file_name": "DIM_DEVICE_SAMPLE_1.csv",
+        "has_header": true
+      },
+      "import_columns": [
+        "DEVICE_ID",
+        "SITE_ID",
+        "DEVICE_NAME",
+        "DEVICE_TYPE"        
+      ]
+    }
+  ]
+}

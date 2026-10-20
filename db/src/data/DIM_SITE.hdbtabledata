@@ -1,0 +1,20 @@
+{
+  "format_version": 1,
+  "imports": [
+    {
+      "target_table": "DIM_SITE",
+      "source_data": {
+        "data_type": "CSV",
+        "file_name": "DIM_SITE_SAMPLE_1.csv",
+        "has_header": true
+      },
+      "import_columns": [
+        "SITE_ID",
+        "SITE_NAME",
+        "SITE_ADDRESS",
+        "CITY",
+        "COUNTRY"
+      ]
+    }
+  ]
+}

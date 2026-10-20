@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_DATETIME" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Projection" application="BAS" cacheInvalidationPeriod="NONE" enforceSqlExecution="true">
+<descriptions defaultDescription="CV_DATETIME"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="DIM_DATETIME">
+    <resourceUri>DIM_DATETIME</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="PR_DIM_DATETIME">
+    <viewAttributes>
+      <viewAttribute id="DATETIME_ID"/>
+      <viewAttribute id="FULL_TIMESTAMP"/>
+      <viewAttribute id="CALENDAR_DATE"/>
+      <viewAttribute id="YEAR"/>
+      <viewAttribute id="MONTH"/>
+      <viewAttribute id="DAY"/>
+      <viewAttribute id="HOUR"/>
+      <viewAttribute id="MINUTE"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="DIM_DATETIME"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="PR_DIM_DATETIME">
+  <attributes>
+    <attribute id="DATETIME_ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DATETIME_ID"/>
+      <keyMapping columnObjectName="PR_DIM_DATETIME" columnName="DATETIME_ID"/>
+    </attribute>
+    <attribute id="FULL_TIMESTAMP" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="FULL_TIMESTAMP"/>
+      <keyMapping columnObjectName="PR_DIM_DATETIME" columnName="FULL_TIMESTAMP"/>
+    </attribute>
+    <attribute id="CALENDAR_DATE" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CALENDAR_DATE"/>
+      <keyMapping columnObjectName="PR_DIM_DATETIME" columnName="CALENDAR_DATE"/>
+    </attribute>
+    <attribute id="YEAR" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="YEAR"/>
+      <keyMapping columnObjectName="PR_DIM_DATETIME" columnName="YEAR"/>
+    </attribute>
+    <attribute id="MONTH" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MONTH"/>
+      <keyMapping columnObjectName="PR_DIM_DATETIME" columnName="MONTH"/>
+    </attribute>
+    <attribute id="DAY" order="6" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="DAY"/>
+      <keyMapping columnObjectName="PR_DIM_DATETIME" columnName="DAY"/>
+    </attribute>
+    <attribute id="HOUR" order="7" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="HOUR"/>
+      <keyMapping columnObjectName="PR_DIM_DATETIME" columnName="HOUR"/>
+    </attribute>
+    <attribute id="MINUTE" order="8" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="MINUTE"/>
+      <keyMapping columnObjectName="PR_DIM_DATETIME" columnName="MINUTE"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="92" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="PR_DIM_DATETIME" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="217"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_DIM_SITE" applyPrivilegeType="NONE" dataCategory="DIMENSION" dimensionType="STANDARD" schemaVersion="3.0" hierarchyGeneration="SQL" outputViewType="Projection" application="BAS" cacheInvalidationPeriod="NONE" enforceSqlExecution="true">
+<descriptions defaultDescription="CV_DIM_SITE"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="DIM_SITE">
+    <resourceUri>DIM_SITE</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="PR_DIM_SITE">
+    <viewAttributes>
+      <viewAttribute id="SITE_ID"/>
+      <viewAttribute id="SITE_NAME"/>
+      <viewAttribute id="SITE_ADDRESS"/>
+      <viewAttribute id="CITY"/>
+      <viewAttribute id="COUNTRY"/>
+    </viewAttributes>
+    <calculatedViewAttributes/>
+    <input node="DIM_SITE"/>
+  </calculationView>
+</calculationViews>
+<logicalModel id="PR_DIM_SITE">
+  <attributes>
+    <attribute id="SITE_ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SITE_ID"/>
+      <keyMapping columnObjectName="PR_DIM_SITE" columnName="SITE_ID"/>
+    </attribute>
+    <attribute id="SITE_NAME" order="2" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SITE_NAME"/>
+      <keyMapping columnObjectName="PR_DIM_SITE" columnName="SITE_NAME"/>
+    </attribute>
+    <attribute id="SITE_ADDRESS" order="3" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="SITE_ADDRESS"/>
+      <keyMapping columnObjectName="PR_DIM_SITE" columnName="SITE_ADDRESS"/>
+    </attribute>
+    <attribute id="CITY" order="4" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="CITY"/>
+      <keyMapping columnObjectName="PR_DIM_SITE" columnName="CITY"/>
+    </attribute>
+    <attribute id="COUNTRY" order="5" displayAttribute="false" attributeHierarchyActive="false">
+      <descriptions defaultDescription="COUNTRY"/>
+      <keyMapping columnObjectName="PR_DIM_SITE" columnName="COUNTRY"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures/>
+  <calculatedMeasures/>
+  <restrictedMeasures/>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="40" y="85"/>
+    </shape>
+  
+    <shape expanded="true" modelObjectName="PR_DIM_SITE" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="100" y="197"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

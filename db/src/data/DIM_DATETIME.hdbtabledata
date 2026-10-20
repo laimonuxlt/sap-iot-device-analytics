@@ -1,0 +1,23 @@
+{
+  "format_version": 1,
+  "imports": [
+    {
+      "target_table": "DIM_DATETIME",
+      "source_data": {
+        "data_type": "CSV",
+        "file_name": "DIM_DATETIME_SAMPLE_1.csv",
+        "has_header": true
+      },
+      "import_columns": [
+        "DATETIME_ID",
+        "FULL_TIMESTAMP",
+        "CALENDAR_DATE",
+        "YEAR",
+        "MONTH",
+        "DAY",
+        "HOUR",
+        "MINUTE"
+      ]
+    }
+  ]
+}

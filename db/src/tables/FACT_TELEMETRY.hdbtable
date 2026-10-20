@@ -1,0 +1,16 @@
+-- ============================================================
+-- FACT_TELEMETRY.hdbtable
+-- HDI design-time table artifact (deploy path: /db/src/tables/)
+-- Grain: one row per device reading attempt (device + metric)
+-- Pure, append-only log
+-- Anomaly status is calculated live in CV_DEVICE_HEALTH instead.
+-- ============================================================
+COLUMN TABLE "FACT_TELEMETRY" (
+  "READING_ID" BIGINT NOT NULL,
+  "DATETIME_ID" BIGINT NOT NULL,
+  "DEVICE_ID" NVARCHAR(32) NOT NULL,
+  "METRIC_ID" NVARCHAR(10) NOT NULL,
+  "SITE_ID" NVARCHAR(32) NOT NULL,
+  "METRIC_VALUE" DECIMAL(10, 2),
+  PRIMARY KEY ("READING_ID")
+);

@@ -1,0 +1,22 @@
+{
+  "format_version": 1,
+  "imports": [
+    {
+      "target_table": "DIM_METRIC",
+      "source_data": {
+        "data_type": "CSV",
+        "file_name": "DIM_METRIC_SAMPLE_01.csv",
+        "has_header": true
+      },
+      "import_columns": [
+        "METRIC_ID",
+        "METRIC_NAME",
+        "UNIT",
+        "MIN_NORMAL",
+        "MAX_NORMAL",
+        "CRITICAL_LOW",
+        "CRITICAL_HIGH"
+      ]
+    }
+  ]
+}

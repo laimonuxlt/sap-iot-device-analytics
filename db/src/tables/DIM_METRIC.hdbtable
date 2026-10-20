@@ -1,0 +1,15 @@
+-- ============================================================
+-- DIM_METRIC.hdbtable
+-- All columns NOT NULL: all reuired  for  CV_DEVICE_HEALTH's
+--  anomaly detection.
+-- ============================================================
+COLUMN TABLE "DIM_METRIC" (
+  "METRIC_ID" NVARCHAR(10) NOT NULL,
+  "METRIC_NAME" NVARCHAR(50) NOT NULL,
+  "UNIT_OF_MEASURE" NVARCHAR(10) NOT NULL,
+  "MIN_NORMAL" DECIMAL(10, 2) NOT NULL,
+  "MAX_NORMAL" DECIMAL(10, 2) NOT NULL,
+  "CRITICAL_LOW" DECIMAL(10, 2) NOT NULL,
+  "CRITICAL_HIGH" DECIMAL(10, 2) NOT NULL,
+  PRIMARY KEY ("METRIC_ID")
+);

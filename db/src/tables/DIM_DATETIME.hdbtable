@@ -1,0 +1,17 @@
+-- ============================================================
+-- DIM_DATETIME.hdbtable
+-- Grain: one row per minute. Every column here is derived
+-- directly from a known timestamp at load time, so all are
+-- NOT NULL — there's no valid "unknown hour" for a time row.
+-- ============================================================
+COLUMN TABLE "DIM_DATETIME" (
+  "DATETIME_ID" BIGINT NOT NULL,
+  "FULL_TIMESTAMP" TIMESTAMP NOT NULL,
+  "CALENDAR_DATE" DATE NOT NULL,
+  "YEAR" INTEGER NOT NULL,
+  "MONTH" INTEGER NOT NULL,
+  "DAY" INTEGER NOT NULL,
+  "HOUR" TINYINT NOT NULL,
+  "MINUTE" TINYINT NOT NULL,
+  PRIMARY KEY ("DATETIME_ID")
+);

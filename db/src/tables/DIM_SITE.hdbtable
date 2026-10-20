@@ -1,0 +1,18 @@
+-- ============================================================
+-- DIM_SITE.hdbtable
+-- SITE_ID / SITE_NAME: are  required as those indetify
+--   real, nameable location.
+-- SITE_TYPE / ADDRESS / CITY / COUNTRY / are nullable —
+--   a site can exist in the system
+--   before every descriptive field is filled in.
+-- ============================================================
+
+
+COLUMN TABLE "DIM_SITE" (
+  "SITE_ID" NVARCHAR(32) NOT NULL,
+  "SITE_NAME" NVARCHAR(100) NOT NULL,
+  "SITE_ADDRESS" NVARCHAR(200),
+  "CITY" NVARCHAR(50),
+  "COUNTRY" NVARCHAR(50),
+  PRIMARY KEY ("SITE_ID")
+);
