@@ -10,7 +10,7 @@
 </dataSources>
 <snapshotProcedures/>
 <calculationViews>
-  <calculationView xsi:type="Calculation:ProjectionView" id="PR_DIM_SITE">
+  <calculationView xsi:type="Calculation:ProjectionView" id="PR_SITE">
     <viewAttributes>
       <viewAttribute id="SITE_ID"/>
       <viewAttribute id="SITE_NAME"/>
@@ -22,27 +22,27 @@
     <input node="DIM_SITE"/>
   </calculationView>
 </calculationViews>
-<logicalModel id="PR_DIM_SITE">
+<logicalModel id="PR_SITE">
   <attributes>
-    <attribute id="SITE_ID" order="1" displayAttribute="false" attributeHierarchyActive="false">
+    <attribute id="SITE_ID" key="true" order="1" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="SITE_ID"/>
-      <keyMapping columnObjectName="PR_DIM_SITE" columnName="SITE_ID"/>
+      <keyMapping columnObjectName="PR_SITE" columnName="SITE_ID"/>
     </attribute>
     <attribute id="SITE_NAME" order="2" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="SITE_NAME"/>
-      <keyMapping columnObjectName="PR_DIM_SITE" columnName="SITE_NAME"/>
+      <keyMapping columnObjectName="PR_SITE" columnName="SITE_NAME"/>
     </attribute>
     <attribute id="SITE_ADDRESS" order="3" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="SITE_ADDRESS"/>
-      <keyMapping columnObjectName="PR_DIM_SITE" columnName="SITE_ADDRESS"/>
+      <keyMapping columnObjectName="PR_SITE" columnName="SITE_ADDRESS"/>
     </attribute>
     <attribute id="CITY" order="4" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="CITY"/>
-      <keyMapping columnObjectName="PR_DIM_SITE" columnName="CITY"/>
+      <keyMapping columnObjectName="PR_SITE" columnName="CITY"/>
     </attribute>
     <attribute id="COUNTRY" order="5" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="COUNTRY"/>
-      <keyMapping columnObjectName="PR_DIM_SITE" columnName="COUNTRY"/>
+      <keyMapping columnObjectName="PR_SITE" columnName="COUNTRY"/>
     </attribute>
   </attributes>
   <calculatedAttributes/>
@@ -53,11 +53,12 @@
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="40" y="85"/>
+      <upperLeftCorner x="92" y="112"/>
+    
+      <rectangleSize width="160"/>
     </shape>
-  
-    <shape expanded="true" modelObjectName="PR_DIM_SITE" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="100" y="197"/>
+    <shape expanded="true" modelObjectName="PR_SITE" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="217"/>
       <rectangleSize height="30" width="160"/>
     </shape>
   </shapes>

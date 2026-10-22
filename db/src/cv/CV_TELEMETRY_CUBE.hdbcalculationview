@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_TELEMETRY_CUBE" applyPrivilegeType="SQL_ANALYTIC_PRIVILEGE" dataCategory="CUBE" schemaVersion="3.0" hierarchyGeneration="SQL" cacheInvalidationPeriod="NONE" enforceSqlExecution="false" application="BAS">
+<descriptions defaultDescription="CV_TELEMETRY_CUBE"/>
+<localVariables/>
+<variableMappings/>
+<dataSources>
+  <DataSource id="FACT_TELEMETRY">
+    <resourceUri>FACT_TELEMETRY</resourceUri>
+  </DataSource>
+</dataSources>
+<snapshotProcedures/>
+<calculationViews>
+  <calculationView xsi:type="Calculation:ProjectionView" id="PR_FACT_TELEMETRY">
+    <viewAttributes>
+      <viewAttribute id="READING_ID"/>
+      <viewAttribute id="DATETIME_ID"/>
+      <viewAttribute id="DEVICE_ID"/>
+      <viewAttribute id="METRIC_ID"/>
+      <viewAttribute id="SITE_ID"/>
+      <viewAttribute id="METRIC_VALUE"/>
+    </viewAttributes>
+    <calculatedViewAttributes>
+      <calculatedViewAttribute datatype="DECIMAL" id="VALUE_MIN" length="10" scale="2" expressionLanguage="SQL">
+        <formula>&quot;METRIC_VALUE&quot;</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute datatype="DECIMAL" id="VALUE_MAX" length="10" scale="2" expressionLanguage="SQL">
+        <formula>&quot;METRIC_VALUE&quot;</formula>
+      </calculatedViewAttribute>
+      <calculatedViewAttribute datatype="DECIMAL" id="VALUE_CNT" length="10" scale="2" expressionLanguage="SQL">
+        <formula>&quot;METRIC_VALUE&quot;</formula>
+      </calculatedViewAttribute>
+    </calculatedViewAttributes>
+    <input node="FACT_TELEMETRY"/>
+  </calculationView>
+</calculationViews>
+
+<logicalModel id="PR_FACT_TELEMETRY">
+  <attributes>
+    <attribute id="DATETIME_ID$local">
+      <descriptions defaultDescription="DATETIME_ID"/>
+      <keyMapping columnObjectName="PR_FACT_TELEMETRY" columnName="DATETIME_ID"/>
+    </attribute>
+    <attribute id="DEVICE_ID$local">
+      <descriptions defaultDescription="DEVICE_ID"/>
+      <keyMapping columnObjectName="PR_FACT_TELEMETRY" columnName="DEVICE_ID"/>
+    </attribute>
+    <attribute id="METRIC_ID$local">
+      <descriptions defaultDescription="METRIC_ID"/>
+      <keyMapping columnObjectName="PR_FACT_TELEMETRY" columnName="METRIC_ID"/>
+    </attribute>
+    <attribute id="SITE_ID$local">
+      <descriptions defaultDescription="SITE_ID"/>
+      <keyMapping columnObjectName="PR_FACT_TELEMETRY" columnName="SITE_ID"/>
+    </attribute>
+  </attributes>
+  <calculatedAttributes/>
+  <baseMeasures>
+    <measure id="METRIC_VALUE" order="1" aggregationType="sum" measureType="simple">
+      <descriptions defaultDescription="Metric Value (sum)"/>
+      <measureMapping columnObjectName="PR_FACT_TELEMETRY" columnName="METRIC_VALUE"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+    <measure id="READING_COUNT" order="2" aggregationType="count" measureType="simple">
+      <descriptions defaultDescription="Reading Count"/>
+      <measureMapping columnObjectName="PR_FACT_TELEMETRY" columnName="READING_ID"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+    <measure id="MIN_VALUE" order="3" aggregationType="min" measureType="simple">
+      <descriptions defaultDescription="Min Value"/>
+      <measureMapping columnObjectName="PR_FACT_TELEMETRY" columnName="VALUE_MIN"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+    <measure id="MAX_VALUE" order="4" aggregationType="max" measureType="simple">
+      <descriptions defaultDescription="Max Value"/>
+      <measureMapping columnObjectName="PR_FACT_TELEMETRY" columnName="VALUE_MAX"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+    <measure id="VALUE_COUNT" order="5" aggregationType="count" measureType="simple" hidden="true">
+      <descriptions defaultDescription="Value Count (non-NULL, helper)"/>
+      <measureMapping columnObjectName="PR_FACT_TELEMETRY" columnName="VALUE_CNT"/>
+      <exceptionAggregationMetadata/>
+    </measure>
+  </baseMeasures>
+  <calculatedMeasures>
+    <measure id="AVG_VALUE" order="6" aggregationType="sum" measureType="simple" datatype="DECIMAL" length="10" scale="2" expressionLanguage="COLUMN_ENGINE">
+      <descriptions defaultDescription="Average Value"/>
+      <formula>&quot;METRIC_VALUE&quot; / &quot;VALUE_COUNT&quot;</formula>
+      <exceptionAggregationMetadata/>
+    </measure>
+  </calculatedMeasures>
+  <restrictedMeasures/>
+  <localDimensions/>
+  <sharedDimensions>
+    <logicalJoin associatedObjectUri="CV_DIM_DATETIME">
+      <attributes>
+        <attributeRef>DATETIME_ID$local</attributeRef>
+      </attributes>
+      <associatedAttributeNames>
+        <attributeName>DATETIME_ID</attributeName>
+      </associatedAttributeNames>
+      <properties cardinality="CN_1" joinType="leftOuter" joinOperator="Equal"/>
+      <associatedAttributeFeatures/>
+    </logicalJoin>
+    <logicalJoin associatedObjectUri="CV_DIM_DEVICE">
+      <attributes>
+        <attributeRef>DEVICE_ID$local</attributeRef>
+      </attributes>
+      <associatedAttributeNames>
+        <attributeName>DEVICE_ID</attributeName>
+      </associatedAttributeNames>
+      <properties cardinality="CN_1" joinType="leftOuter" joinOperator="Equal"/>
+      <associatedAttributeFeatures/>
+    </logicalJoin>
+    <logicalJoin associatedObjectUri="CV_DIM_METRIC">
+      <attributes>
+        <attributeRef>METRIC_ID$local</attributeRef>
+      </attributes>
+      <associatedAttributeNames>
+        <attributeName>METRIC_ID</attributeName>
+      </associatedAttributeNames>
+      <properties cardinality="CN_1" joinType="leftOuter" joinOperator="Equal"/>
+      <associatedAttributeFeatures/>
+    </logicalJoin>
+    <logicalJoin associatedObjectUri="CV_DIM_SITE">
+      <attributes>
+        <attributeRef>SITE_ID$local</attributeRef>
+      </attributes>
+      <associatedAttributeNames>
+        <attributeName>SITE_ID</attributeName>
+      </associatedAttributeNames>
+      <properties cardinality="CN_1" joinType="leftOuter" joinOperator="Equal"/>
+      <associatedAttributeFeatures/>
+    </logicalJoin>
+  </sharedDimensions>
+</logicalModel>
+<layout>
+  <shapes>
+    <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
+      <upperLeftCorner x="92" y="112"/>
+    
+      <rectangleSize width="160"/>
+    </shape>
+    
+  
+    <shape expanded="true" modelObjectName="PR_FACT_TELEMETRY" modelObjectNameSpace="CalculationView">
+      <upperLeftCorner x="92" y="277"/>
+      <rectangleSize height="30" width="160"/>
+    </shape>
+    <shape modelObjectName="PR_FACT_TELEMETRY" modelObjectNameSpace="StarJoinViewNodeInput" modelObjectType="repository">
+      <upperLeftCorner x="363" y="46"/>
+      <rectangleSize width="197"/>
+    </shape>
+    <shape modelObjectName="CV_DIM_DATETIME" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+      <upperLeftCorner x="80" y="-126"/>
+      <rectangleSize width="202"/>
+    </shape>
+    <shape modelObjectName="CV_DIM_DEVICE" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+      <upperLeftCorner x="584" y="-114"/>
+      <rectangleSize width="184"/>
+    </shape>
+    <shape modelObjectName="CV_DIM_METRIC" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+      <upperLeftCorner x="87" y="184"/>
+      <rectangleSize width="213"/>
+    </shape>
+    <shape modelObjectName="CV_DIM_SITE" modelObjectNameSpace="StarJoinViewNodeSharedCV" modelObjectType="repository">
+      <upperLeftCorner x="590" y="194"/>
+      <rectangleSize width="189"/>
+    </shape>
+  </shapes>
+</layout>
+</Calculation:scenario>

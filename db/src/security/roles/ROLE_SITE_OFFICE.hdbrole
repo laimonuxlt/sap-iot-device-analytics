@@ -1,0 +1,23 @@
+{
+  "role": {
+    "name": "ROLE_SITE_OFFICE",
+    "schema_privileges": [
+      {
+        "privileges": [
+          "SELECT",
+          "INSERT",
+          "UPDATE",
+          "DELETE",
+          "EXECUTE"
+        ]
+      }
+    ],
+    "schema_analytic_privileges": [
+      {
+        "privileges": [
+          "AP_ROLE_SITE_OFFICE"
+        ]
+      }
+    ]
+  }
+}
