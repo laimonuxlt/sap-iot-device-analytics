@@ -1,2 +1,26 @@
-**/node_modules/**
-.envgir
+# Dependencies
+node_modules/
+
+# Credentials and local bindings (contain DB passwords/certificates)
+.env
+.env.*
+!.env.example
+default-env.json
+default-services.json
+.cdsrc-private.json
+
+# Build output
+gen/
+dist/
+mta_archives/
+*.mtar
+.mta/
+resources/
+
+# Logs
+*.log
+
+# Editor / OS
+.vscode/
+.DS_Store
+Thumbs.db
