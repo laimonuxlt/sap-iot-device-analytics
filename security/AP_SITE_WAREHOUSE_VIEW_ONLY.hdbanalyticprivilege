@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Privilege:analyticPrivilege xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AccessControl="http://www.sap.com/ndb/SQLCoreModelAccessControl.ecore" xmlns:Privilege="http://www.sap.com/ndb/BiModelPrivilege.ecore" id="AP_SITE_WAREHOUSE_VIEW_ONLY" privilegeType="SQL_ANALYTIC_PRIVILEGE" schemaVersion="1.1">
+<descriptions defaultDescription="AP_SITE_WAREHOUSE_VIEW_ONLY"/>
+<securedModels>
+  <modelUri>CV_TELEMETRY_CUBE</modelUri>
+</securedModels>
+<restriction>
+  <filter attributeName="SITE_ID" xsi:type="Privilege:AttributeFilter">
+    <valueFilter xsi:type="AccessControl:SingleValueFilter" including="true" value="SITE_WH_03" lowValue="undefined" highValue="undefined"/>
+  </filter>
+  <attributeName>SITE_ID</attributeName>
+  <originInformationModelUri>CV_TELEMETRY_CUBE</originInformationModelUri>
+</restriction>
+</Privilege:analyticPrivilege>

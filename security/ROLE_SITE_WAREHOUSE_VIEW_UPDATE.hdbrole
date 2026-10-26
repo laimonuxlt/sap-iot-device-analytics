@@ -1,0 +1,20 @@
+{
+  "role": {
+    "name": "ROLE_SITE_WAREHOUSE_VIEW_UPDATE",
+    "schema_privileges": [
+      {
+        "privileges": [
+          "SELECT",
+          "UPDATE"
+        ]
+      }
+    ],
+    "schema_analytic_privileges": [
+      {        
+        "privileges": [
+          "AP_SITE_WAREHOUSE_VIEW_UPDATE"
+        ]
+      }
+    ]
+  }
+}
