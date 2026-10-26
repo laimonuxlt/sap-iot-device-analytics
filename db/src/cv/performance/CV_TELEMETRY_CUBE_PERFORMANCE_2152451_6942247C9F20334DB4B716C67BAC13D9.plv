@@ -1,0 +1,1777 @@
+<?Version 38?>
+<Plan ID="ID_2152451_6942247C9F20334DB4B716C67BAC13D9_0" xmlns="http://www.sap.com/ndb/planviz" Type="Executed" PlanType="QoExec">
+<SQL><![CDATA[SELECT 
+	"SITE_NAME",
+	"YEAR",
+	"MONTH",
+	"METRIC_NAME",
+	"UNIT_OF_MEASURE",
+	AVG("AVG_METRIC_VALUE") AS "AVG_VALUE",
+	MIN("MIN_METRIC_VALUE") AS MIN_VALUE,
+	MAX("MAX_METRIC_VALUE") AS MAX_VALUE
+FROM "CV_TELEMETRY_CUBE"
+WHERE "YEAR" = 2026
+	AND "MONTH" = 10
+GROUP BY 
+	"SITE_NAME",
+	"YEAR",
+	"MONTH",
+	"METRIC_NAME",
+	"UNIT_OF_MEASURE"]]></SQL>
+<SystemVersion><![CDATA[{"Version":"4.00.000.00.1791475825","CompileType":"rel","USER_NAME":"Capturing USER_NAME is disabled","SCHEMA_NAME":"IOT_DEVICE_ANALYTICS_HDI_DB_1"}]]></SystemVersion>
+<RecompileState><![CDATA[INITIAL_STATE]]></RecompileState>
+<SessionVariables><![CDATA[{"ABAPVARCHARMODE":"FALSE","APPLICATION":"SAP_HANARuntimeTools_HRA","APPLICATIONUSER":"Capturing APPLICATIONUSER is disabled","APPLICATIONVERSION":"4.0.261008-1792066541-7d34f69","DRIVERVERSION":"2.30.27","OS_USER":"Capturing OS_USER is disabled","PROTOCOL_VERSION":"4.1 (6, 10)","SPATIAL_OUTPUT_REPRESENTATION":"EWKB","VIRTUAL_TABLE_REPLICA":"TRUE"}]]></SessionVariables>
+<ProjectedColsWithDatatype><![CDATA[SITE_NAME(NVARCHAR(100)), YEAR(INT), MONTH(INT), METRIC_NAME(NVARCHAR(50)), UNIT_OF_MEASURE(NVARCHAR(10)), AVG_VALUE(DECIMAL(10, 2)), MIN_VALUE(DECIMAL(10, 2)), MAX_VALUE(DECIMAL(10, 2))]]></ProjectedColsWithDatatype>
+<CompileTime>
+	<Start Unit="us">1793000652179316</Start>
+	<End Unit="us">1793000652179353</End>
+</CompileTime>
+<StmtStats><![CDATA[]]></StmtStats>
+<StmtMemStats><![CDATA[[{"Allocated Count":5248,"Allocated Size":3702596,"Allocator Name":"Connection/2152451/Statement/9244706659535206","Count in Use":5245,"Deallocated Count":3159,"Deallocated Size":3162340,"Depth":3,"Max Allocation Size (estimate)":1048576,"Max Single Allocation Size":1048576,"Size in Use":539984},{"Allocated Count":4,"Allocated Size":2496,"Allocator Name":"Connection/2152451/Statement/9244706659535206/Pool/RowEngine/QueryExecution/SearchAlloc","Count in Use":4,"Deallocated Count":0,"Deallocated Size":0,"Depth":4,"Max Allocation Size (estimate)":2496,"Max Single Allocation Size":1048,"Size in Use":2496},{"Allocated Count":5271,"Allocated Size":3703340,"Allocator Name":"Connection/2152451/Statement/9244706659535206/IMPLICIT","Count in Use":5268,"Deallocated Count":3160,"Deallocated Size":3162380,"Depth":4,"Max Allocation Size (estimate)":1048576,"Max Single Allocation Size":1048576,"Size in Use":540688}]]]></StmtMemStats>
+<CompileSummary><![CDATA[{}]]></CompileSummary>
+	<RootRelation ID="ID_2152451_6942247C9F20334DB4B716C67BAC13D9_0" TypeName="PROJECT" Status="Finished">
+		<Name>HEX Search</Name>
+		<ExecutionTime>
+			<Exclusive Unit="us">0</Exclusive>
+			<Inclusive Unit="us">6181</Inclusive>
+		</ExecutionTime>
+		<MemoryUsage>
+			<Max>0</Max>
+		</MemoryUsage>
+		<Child ID="ID_2152451_6942247C9F20334DB4B716C67BAC13D9_1" >
+			<ExecutedOutputCardinality>58</ExecutedOutputCardinality>
+			<FetchCallCount>2</FetchCallCount>
+		</Child>
+	</RootRelation>
+	<Relation ID="ID_2152451_6942247C9F20334DB4B716C67BAC13D9_1" TypeName="HEX_SEARCH" InternalBufferId="0" Status="Finished">
+		<Name>HEX Search</Name>
+		<ExecutionType>HEX</ExecutionType>
+		<Summary><![CDATA[DIM_SITE.SITE_NAME, 2026, 10, DIM_METRIC.METRIC_NAME, DIM_METRIC.UNIT_OF_MEASURE, AVG_VALUE, MIN_VALUE, MAX_VALUE]]></Summary>
+		<Location>123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040</Location>
+		<EstimatedCost>
+			<Inclusive Unit="us">1049.18</Inclusive>
+		</EstimatedCost>
+		<EstimatedOutputCardinality>59.9999</EstimatedOutputCardinality>
+		<ExecutionTime>
+			<Start Unit="us">1793000652182291</Start>
+			<End Unit="us">1793000652188472</End>
+			<Exclusive Unit="us">2264</Exclusive>
+			<Inclusive Unit="us">6181</Inclusive>
+			<Timestamps>[{"Open": [{"start":1793000652182291,"end":1793000652182317,"thread":6534},{"start":1793000652182326,"end":1793000652184383,"thread":6534}]},{"Fetch": [{"start":1793000652184443,"end":1793000652184534,"thread":6534},{"start":1793000652188367,"end":1793000652188444,"thread":6534}]},{"Close": [{"start":1793000652188459,"end":1793000652188472,"thread":6534}]}]</Timestamps>
+		</ExecutionTime>
+		<MemoryUsage>
+			<Max>0</Max>
+		</MemoryUsage>
+		<KernelCPUTime Unit="ms">0.000</KernelCPUTime>
+		<UserCPUTime Unit="ms">1.438</UserCPUTime>
+		<Details><![CDATA[{"Projected Cols":"DIM_SITE.SITE_NAME, 2026, 10, DIM_METRIC.METRIC_NAME, DIM_METRIC.UNIT_OF_MEASURE, AVG_VALUE, MIN_VALUE, MAX_VALUE"}]]></Details>
+		<InnerPlans>
+			<Plan ID="ID_2152451_6942247C9F20334DB4B716C67BAC13D9_1_1" Type="Estimated" PlanType="Logical">
+				<RootRelation ID="ID_2152451_6942247C9F20334DB4B716C67BAC13D9_1_1" TypeName="PROJECT">
+					<Name>PROJECT</Name>
+					<Summary><![CDATA[DIM_SITE.SITE_NAME, 2026, 10, DIM_METRIC.METRIC_NAME, DIM_METRIC.UNIT_OF_MEASURE, AVG_VALUE, MIN_VALUE, MAX_VALUE]]></Summary>
+					<Property><![CDATA[PHYSICAL_ENUM_BY: HEX_PROJECT]]></Property>
+					<Location>123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040</Location>
+					<EstimatedCost>
+						<Exclusive Unit="us">-1000000</Exclusive>
+						<Inclusive Unit="us">1049.18</Inclusive>
+					</EstimatedCost>
+					<EstimatedOutputCardinality>59.9999</EstimatedOutputCardinality>
+					<Details><![CDATA[{"Projected Cols":"DIM_SITE.SITE_NAME, 2026, 10, DIM_METRIC.METRIC_NAME, DIM_METRIC.UNIT_OF_MEASURE, AVG_VALUE, MIN_VALUE, MAX_VALUE"}]]></Details>
+					<Child ID="ID_2152451_6942247C9F20334DB4B716C67BAC13D9_1_2">
+					</Child>
+				</RootRelation>
+				<Relation ID="ID_2152451_6942247C9F20334DB4B716C67BAC13D9_1_2" TypeName="MATERIALIZE">
+					<Name>MATERIALIZE</Name>
+					<Summary><![CDATA[TO_DECIMAL(TO_DECIMAL(SUM(SUM(FACT_TELEMETRY.METRIC_VALUE))) / TO_DECIMAL(SUM(COUNT(FACT_TELEMETRY.METRIC_VALUE))), 10, 2), MIN(MIN(FACT_TELEMETRY.METRIC_VALUE)), MAX(MAX(FACT_TELEMETRY.METRIC_VALUE))]]></Summary>
+					<Property><![CDATA[ENUM_BY: PREAGGR_BEFORE_JOIN, PHYSICAL_ENUM_BY: HEX_MATERIALIZE]]></Property>
+					<Location>123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040</Location>
+					<EstimatedCost>
+						<Exclusive Unit="us">-1000000</Exclusive>
+						<Inclusive Unit="us">1049.18</Inclusive>
+					</EstimatedCost>
+					<EstimatedOutputCardinality>59.9999</EstimatedOutputCardinality>
+					<Child ID="ID_2152451_6942247C9F20334DB4B716C67BAC13D9_1_3">
+					</Child>
+				</Relation>
+				<Relation ID="ID_2152451_6942247C9F20334DB4B716C67BAC13D9_1_3" TypeName="GROUP_BY">
+					<Name>AGGREGATION</Name>
+					<Summary><![CDATA[GROUPING: DIM_METRIC.METRIC_NAME, DIM_METRIC.UNIT_OF_MEASURE, DIM_SITE.SITE_NAME, AGGREGATION: SUM(SUM(FACT_TELEMETRY.METRIC_VALUE)), MIN(MIN(FACT_TELEMETRY.METRIC_VALUE)), MAX(MAX(FACT_TELEMETRY.METRIC_VALUE)), SUM(COUNT(FACT_TELEMETRY.METRIC_VALUE))]]></Summary>
+					<Property><![CDATA[VALUE_ID GROUPING, PERFECT_HASH, ENUM_BY: PREAGGR_BEFORE_JOIN, PHYSICAL_ENUM_BY: HEX_AGGR]]></Property>
+					<Location>123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040</Location>
+					<EstimatedCost>
+						<Exclusive Unit="us">-1000000</Exclusive>
+						<Inclusive Unit="us">1049.18</Inclusive>
+					</EstimatedCost>
+					<EstimatedOutputCardinality>56.9999</EstimatedOutputCardinality>
+					<Details><![CDATA[{"Grouping Cols":"DIM_METRIC.METRIC_NAME, DIM_METRIC.UNIT_OF_MEASURE, DIM_SITE.SITE_NAME, ","Aggregation Cols":"SUM(SUM(FACT_TELEMETRY.METRIC_VALUE)), MIN(MIN(FACT_TELEMETRY.METRIC_VALUE)), MAX(MAX(FACT_TELEMETRY.METRIC_VALUE)), SUM(COUNT(FACT_TELEMETRY.METRIC_VALUE))"}]]></Details>
+					<Child ID="ID_2152451_6942247C9F20334DB4B716C67BAC13D9_1_4">
+					</Child>
+				</Relation>
+				<Relation ID="ID_2152451_6942247C9F20334DB4B716C67BAC13D9_1_4" TypeName="JOIN">
+					<Name>INDEX JOIN (LEFT OUTER)</Name>
+					<Summary><![CDATA[MANY-TO-ONE INDEX JOIN CONDITION: FACT_TELEMETRY.METRIC_ID = DIM_METRIC.METRIC_ID, RIGHT SIDE INDEX]]></Summary>
+					<Schema><![CDATA[IOT_DEVICE_ANALYTICS_HDI_DB_1]]></Schema>
+					<TableType><![CDATA[COLUMN TABLE]]></TableType>
+					<ObjectName><![CDATA[DIM_METRIC]]></ObjectName>
+					<Property><![CDATA[TRANSLATION TABLE (LEFT): FACT_TELEMETRY.METRIC_ID = DIM_METRIC.METRIC_ID, ENUM_BY: PREAGGR_BEFORE_JOIN, PHYSICAL_ENUM_BY: HEX_INDEX_JOIN]]></Property>
+					<Location>123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040</Location>
+					<EstimatedCost>
+						<Exclusive Unit="us">-1000000</Exclusive>
+						<Inclusive Unit="us">1029.84</Inclusive>
+					</EstimatedCost>
+					<EstimatedOutputCardinality>59.9999</EstimatedOutputCardinality>
+					<Details><![CDATA[{"Join Condition":"FACT_TELEMETRY.METRIC_ID = DIM_METRIC.METRIC_ID, RIGHT SIDE INDEX"}]]></Details>
+					<Child ID="ID_2152451_6942247C9F20334DB4B716C67BAC13D9_1_5">
+					</Child>
+				</Relation>
+				<Relation ID="ID_2152451_6942247C9F20334DB4B716C67BAC13D9_1_5" TypeName="GROUP_BY">
+					<Name>AGGREGATION</Name>
+					<Summary><![CDATA[GROUPING: DIM_SITE.SITE_NAME, FACT_TELEMETRY.METRIC_ID, AGGREGATION: SUM(FACT_TELEMETRY.METRIC_VALUE), MIN(FACT_TELEMETRY.METRIC_VALUE), MAX(FACT_TELEMETRY.METRIC_VALUE), COUNT(FACT_TELEMETRY.METRIC_VALUE)]]></Summary>
+					<Property><![CDATA[VALUE_ID GROUPING, PERFECT_HASH, ENUM_BY: PREAGGR_BEFORE_JOIN, PHYSICAL_ENUM_BY: HEX_AGGR]]></Property>
+					<Location>123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040</Location>
+					<EstimatedCost>
+						<Exclusive Unit="us">-1000000</Exclusive>
+						<Inclusive Unit="us">1023.07</Inclusive>
+					</EstimatedCost>
+					<EstimatedOutputCardinality>59.9999</EstimatedOutputCardinality>
+					<Details><![CDATA[{"Grouping Cols":"DIM_SITE.SITE_NAME, FACT_TELEMETRY.METRIC_ID, ","Aggregation Cols":"SUM(FACT_TELEMETRY.METRIC_VALUE), MIN(FACT_TELEMETRY.METRIC_VALUE), MAX(FACT_TELEMETRY.METRIC_VALUE), COUNT(FACT_TELEMETRY.METRIC_VALUE)"}]]></Details>
+					<Child ID="ID_2152451_6942247C9F20334DB4B716C67BAC13D9_1_6">
+					</Child>
+				</Relation>
+				<Relation ID="ID_2152451_6942247C9F20334DB4B716C67BAC13D9_1_6" TypeName="JOIN">
+					<Name>INDEX JOIN (LEFT OUTER)</Name>
+					<Summary><![CDATA[MANY-TO-ONE INDEX JOIN CONDITION: FACT_TELEMETRY.SITE_ID = DIM_SITE.SITE_ID, RIGHT SIDE INDEX]]></Summary>
+					<Schema><![CDATA[IOT_DEVICE_ANALYTICS_HDI_DB_1]]></Schema>
+					<TableType><![CDATA[COLUMN TABLE]]></TableType>
+					<ObjectName><![CDATA[DIM_SITE]]></ObjectName>
+					<Property><![CDATA[TRANSLATION TABLE (LEFT): FACT_TELEMETRY.SITE_ID = DIM_SITE.SITE_ID, ENUM_BY: JOIN_THRU_JOIN, PHYSICAL_ENUM_BY: HEX_INDEX_JOIN]]></Property>
+					<Location>123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040</Location>
+					<EstimatedCost>
+						<Exclusive Unit="us">-1000000</Exclusive>
+						<Inclusive Unit="us">1000.35</Inclusive>
+					</EstimatedCost>
+					<EstimatedOutputCardinality>323.58</EstimatedOutputCardinality>
+					<Details><![CDATA[{"Join Condition":"FACT_TELEMETRY.SITE_ID = DIM_SITE.SITE_ID, RIGHT SIDE INDEX"}]]></Details>
+					<Child ID="ID_2152451_6942247C9F20334DB4B716C67BAC13D9_1_7">
+					</Child>
+				</Relation>
+				<Relation ID="ID_2152451_6942247C9F20334DB4B716C67BAC13D9_1_7" TypeName="JOIN">
+					<Name>TABLE SCAN SEMI JOIN</Name>
+					<Summary><![CDATA[JOIN CONDITION: MANY-TO-ONE FACT_TELEMETRY.DATETIME_ID = DIM_DATETIME.DATETIME_ID]]></Summary>
+					<Schema><![CDATA[IOT_DEVICE_ANALYTICS_HDI_DB_1]]></Schema>
+					<TableType><![CDATA[COLUMN TABLE]]></TableType>
+					<ObjectName><![CDATA[FACT_TELEMETRY]]></ObjectName>
+					<Property><![CDATA[TRANSLATION TABLE (RIGHT): FACT_TELEMETRY.DATETIME_ID = DIM_DATETIME.DATETIME_ID, PHYSICAL_ENUM_BY: HEX_TABLE_SCAN_SEMI_JOIN]]></Property>
+					<Location>123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040</Location>
+					<EstimatedCost>
+						<Exclusive Unit="us">-1000000</Exclusive>
+						<Inclusive Unit="us">963.859</Inclusive>
+					</EstimatedCost>
+					<EstimatedOutputCardinality>323.58</EstimatedOutputCardinality>
+					<Details><![CDATA[{"Join Condition":"MANY-TO-ONE FACT_TELEMETRY.DATETIME_ID = DIM_DATETIME.DATETIME_ID"}]]></Details>
+					<Child ID="ID_2152451_6942247C9F20334DB4B716C67BAC13D9_1_8">
+					</Child>
+				</Relation>
+				<Relation ID="ID_2152451_6942247C9F20334DB4B716C67BAC13D9_1_8" TypeName="TABLE">
+					<Name>TABLE SCAN</Name>
+					<Summary><![CDATA[FILTER CONDITION: DIM_DATETIME.YEAR = 2026 AND DIM_DATETIME.MONTH = 10 (DETAIL: (([SCAN] DIM_DATETIME.MONTH = 10) AND ([SCAN] DIM_DATETIME.YEAR = 2026)))]]></Summary>
+					<Schema><![CDATA[IOT_DEVICE_ANALYTICS_HDI_DB_1]]></Schema>
+					<TableType><![CDATA[COLUMN TABLE]]></TableType>
+					<ObjectName><![CDATA[DIM_DATETIME]]></ObjectName>
+					<Property><![CDATA[PHYSICAL_ENUM_BY: HEX_TABLE_SCAN]]></Property>
+					<Location>123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040</Location>
+					<EstimatedCost>
+						<Exclusive Unit="us">-1000000</Exclusive>
+						<Inclusive Unit="us">933.669</Inclusive>
+					</EstimatedCost>
+					<EstimatedOutputCardinality>29624.3</EstimatedOutputCardinality>
+					<Details><![CDATA[{"Filter":"DIM_DATETIME.YEAR = 2026 AND DIM_DATETIME.MONTH = 10 (DETAIL: (([SCAN] DIM_DATETIME.MONTH = 10) AND ([SCAN] DIM_DATETIME.YEAR = 2026)))"}]]></Details>
+				</Relation>
+			</Plan>
+			<Plan ID="5594_group12" Type="Executed" PlanType="Column">
+				<RootRelation ID="5594_group12_node" Status="Finished" Physical="True" TypeName="HEX PROJECT">
+					<Name><![CDATA[PROJECT]]></Name>
+					<Summary><![CDATA[DIM_SITE.SITE_NAME, 2026, 10, DIM_METRIC.METRIC_NAME, DIM_METRIC.UNIT_OF_MEASURE, AVG_VALUE, MIN_VALUE, MAX_VALUE]]></Summary>
+					<ExecutionTime>
+						<Timestamps>[{"Pop":[{"start":1793000652184377,"end":1793000652188397}]}]</Timestamps>
+					</ExecutionTime>
+					<UserCPUTime Unit="ms">0.041</UserCPUTime>
+					<Details><![CDATA[{"max numUsedLocalContexts":"1","Estimated Output Cardinality":"60","Memory Allocated":"0.006 MiB","Output Spec":"SITE_NAME NVARCHAR(100), YEAR INT, MONTH INT, METRIC_NAME NVARCHAR(50), UNIT_OF_MEASURE NVARCHAR(10), AVG_VALUE FIXED8(10, 2), MIN_VALUE FIXED8(10, 2), MAX_VALUE FIXED8(10, 2)"}]]></Details>
+					<InnerPlans>
+						<Plan ID="5595_op98" Type="Executed" PlanType="Column">
+							<RootRelation ID="5595_op98_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[ProjectFetchOp]]></Name>
+								<Summary><![CDATA[Fetch buffered result rows]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652184531,"end":1793000652188397}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.011</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"2","pipeline 20":"numUsedLocalContexts 1, CPUTime 0.011 ms, CPUWaitTime 0.000 ms, calls 2","operatorId":"98"}]]></Details>
+								<Child ID="5596_op97_node">
+									<Details><![CDATA[{"ConnectionType":"Logical"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5596_op97" Type="Executed" PlanType="Column">
+							<RootRelation ID="5596_op97_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[ProjectBufferOp]]></Name>
+								<Summary><![CDATA[Buffer result rows if required]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652184377,"end":1793000652184527}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.030</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"4","pipeline 19":"numUsedLocalContexts 1, CPUTime 0.030 ms, CPUWaitTime 0.000 ms, calls 4","Init CPUTime":"0.001 ms","Init CPUWaitTime":"0.000 ms","InitLocal CPUTime":"0.001 ms","InitLocal CPUWaitTime":"0.000 ms","Memory Allocated":"0.006 MiB","operatorId":"97"}]]></Details>
+								<Child ID="5597_op96_node">
+									<ExecutedOutputCardinality>58</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+					</InnerPlans>
+				</RootRelation>
+			</Plan>
+			<Plan ID="5598_group13" Type="Executed" PlanType="Column">
+				<RootRelation ID="5598_group13_node" Status="Finished" Physical="True" TypeName="HEX MATERIALIZE">
+					<Name><![CDATA[MATERIALIZE]]></Name>
+					<Summary><![CDATA[TO_DECIMAL(TO_DECIMAL(SUM(SUM(FACT_TELEMETRY.METRIC_VALUE))) / TO_DECIMAL(SUM(COUNT(FACT_TELEMETRY.METRIC_VALUE))), 10, 2), MIN(MIN(FACT_TELEMETRY.METRIC_VALUE)), MAX(MAX(FACT_TELEMETRY.METRIC_VALUE))]]></Summary>
+					<ExecutionTime>
+						<Timestamps>[{"Pop":[{"start":1793000652184375,"end":1793000652184527}]}]</Timestamps>
+					</ExecutionTime>
+					<UserCPUTime Unit="ms">0.032</UserCPUTime>
+					<Details><![CDATA[{"max numUsedLocalContexts":"1","Estimated Output Cardinality":"60","Output Spec":"[DocId, ValueId, Value] SITE_NAME NVARCHAR(100), [DocId, ValueId, Value] METRIC_NAME NVARCHAR(50), [DocId, ValueId, Value] UNIT_OF_MEASURE NVARCHAR(10), [Value] AVG_VALUE FIXED8(10, 2), [Value] MIN_VALUE FIXED8(10, 2), [Value] MAX_VALUE FIXED8(10, 2)"}]]></Details>
+					<InnerPlans>
+						<Plan ID="5597_op96" Type="Executed" PlanType="Column">
+							<RootRelation ID="5597_op96_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[LlangOutOperator]]></Name>
+								<Summary><![CDATA[<Materialize VectorGroupBy Results>; <Materialize: DIM_SITE.SITE_NAME (NVARCHAR(100)), DIM_METRIC.METRIC_NAME (NVARCHAR(50)), DIM_METRIC.UNIT_OF_MEASURE (NVARCHAR(10)), to_fixed64_nocheck(div(to_decimal128(1000020.10000000 (FIXED8(18, 2))), to_decimal128(1000020.10000003 (BIGINT))), Int[10], Int[2]) alias 1000028.30000000 (FIXED8(10, 2))>; <Materialize: 1000028.30000000 (FIXED8(10, 2)) alias 1000011.10000000 (FIXED8(10, 2)), 1000020.10000001 (FIXED8(10, 2)) alias 1000011.10000001 (FIXED8(10, 2)), 1000020.10000002 (FIXED8(10, 2)) alias 1000011.10000002 (FIXED8(10, 2))>]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652184375,"end":1793000652184527}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.032</UserCPUTime>
+								<EstimatedOutputCardinality>60</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 19":"numUsedLocalContexts 1, CPUTime 0.032 ms, CPUWaitTime 0.000 ms, calls 1","InitLocal CPUTime":"0.001 ms","InitLocal CPUWaitTime":"0.000 ms","Estimated Output Cardinality":"60","JIT cache hit":"yes","JIT compile status":"Compiled (Policy: MediumCardinality)","JIT effective line count":"227","JIT opt level":"O2","index predicate":"DIM_SITE.SITE_ID (NOSOURCE-PARTVALUEID) = FACT_TELEMETRY.SITE_ID (PARTVALUEID)","index predicate_1":"DIM_METRIC.METRIC_ID (NOSOURCE-PARTVALUEID) = FACT_TELEMETRY.METRIC_ID (PARTVALUEID)","operatorId":"96"}]]></Details>
+								<Child ID="5599_op96_node">
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+					</InnerPlans>
+				</RootRelation>
+			</Plan>
+			<Plan ID="5600_group14" Type="Executed" PlanType="Column">
+				<RootRelation ID="5600_group14_node" Status="Finished" Physical="True" TypeName="HEX AGGREGATION">
+					<Name><![CDATA[AGGREGATION]]></Name>
+					<Summary><![CDATA[GROUPING: DIM_METRIC.METRIC_NAME, DIM_METRIC.UNIT_OF_MEASURE, DIM_SITE.SITE_NAME, AGGREGATION: SUM(SUM(FACT_TELEMETRY.METRIC_VALUE)), MIN(MIN(FACT_TELEMETRY.METRIC_VALUE)), MAX(MAX(FACT_TELEMETRY.METRIC_VALUE)), SUM(COUNT(FACT_TELEMETRY.METRIC_VALUE))]]></Summary>
+					<ExecutionTime>
+						<Timestamps>[{"Pop":[{"start":1793000652184215,"end":1793000652184350}]}]</Timestamps>
+					</ExecutionTime>
+					<UserCPUTime Unit="ms">0.027</UserCPUTime>
+					<Details><![CDATA[{"max numUsedLocalContexts":"1","BitwiseValueBlender":"BitwiseValueBlender{ typeDefs: [VALUEID, VALUEID, VALUEID], min: [0, 0, 0], shift: [0, 2, 4], mask: [0x3, 0x3, 0x1f] }","Estimated Output Cardinality":"57","HashColumn(0)":"DIM_METRIC.METRIC_NAME (VALUEID)","HashColumn(1)":"DIM_METRIC.UNIT_OF_MEASURE (VALUEID)","HashColumn(2)":"DIM_SITE.SITE_NAME (VALUEID)","Memory Allocated":"0.020 MiB","Output Spec":"[DocId, ValueId, Value] SITE_NAME NVARCHAR(100), [DocId, ValueId, Value] METRIC_NAME NVARCHAR(50), [DocId, ValueId, Value] UNIT_OF_MEASURE NVARCHAR(10), [Value] ? FIXED8(10, 2), [Value] ? FIXED8(10, 2), to_fixed64_nocheck(...) FIXED8(10, 2)","agg(0)":"Max(1000021.10000002 (FIXED8(10, 2))) -> 1000020.10000002 (FIXED8(10, 2))","agg(1)":"Min(1000021.10000001 (FIXED8(10, 2))) -> 1000020.10000001 (FIXED8(10, 2))","agg(2)":"Sum(1000021.10000000 (FIXED8(18, 2))) -> 1000020.10000000 (FIXED8(18, 2))","agg(3)":"Sum(1000021.10000003 (BIGINT NOT NULL)) -> 1000020.10000003 (BIGINT)","rowWidth":"40"}]]></Details>
+					<InnerPlans>
+						<Plan ID="5601_op90" Type="Executed" PlanType="Column">
+							<RootRelation ID="5601_op90_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[EnforceCompilationByThresholdOpT<>]]></Name>
+								<Summary><![CDATA[]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652184460,"end":1793000652184461}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.001</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 19":"numUsedLocalContexts 1, CPUTime 0.001 ms, CPUWaitTime 0.000 ms, calls 1","TaskStats from op: 107":"count = 0, parentOpId: 4294967295","operatorId":"90"}]]></Details>
+								<Child ID="5602_op89_node">
+									<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5603_op93" Type="Executed" PlanType="Column">
+							<RootRelation ID="5603_op93_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[LlangNoDataOperator]]></Name>
+								<Summary><![CDATA[<Vector GroupBy [Merge Phase]>]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652184371,"end":1793000652184527}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.006</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 19":"numUsedLocalContexts 1, CPUTime 0.006 ms, CPUWaitTime 0.000 ms, calls 1","InitLocal CPUTime":"0.001 ms","InitLocal CPUWaitTime":"0.000 ms","JIT cache hit":"yes","JIT compile status":"Compiled (Policy: MediumCardinality)","JIT effective line count":"172","JIT opt level":"O2","TaskStats from op: 106":"count = 0, parentOpId: 4294967295","index predicate":"DIM_SITE.SITE_ID (NOSOURCE-PARTVALUEID) = FACT_TELEMETRY.SITE_ID (PARTVALUEID)","index predicate_1":"DIM_METRIC.METRIC_ID (NOSOURCE-PARTVALUEID) = FACT_TELEMETRY.METRIC_ID (PARTVALUEID)","operatorId":"93"}]]></Details>
+								<Child ID="5602_op89_node">
+									<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5604_op96" Type="Executed" PlanType="Column">
+							<RootRelation ID="5604_op96_node" Status="NotStarted" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[LlangOutOperator]]></Name>
+								<Summary><![CDATA[Code-generated operator across relations <see next op>]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<UserCPUTime Unit="ms">0.000</UserCPUTime>
+								<EstimatedOutputCardinality>57</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"0","calls":"0","Estimated Output Cardinality":"57","index predicate":"DIM_SITE.SITE_ID (NOSOURCE-PARTVALUEID) = FACT_TELEMETRY.SITE_ID (PARTVALUEID)","index predicate_1":"DIM_METRIC.METRIC_ID (NOSOURCE-PARTVALUEID) = FACT_TELEMETRY.METRIC_ID (PARTVALUEID)"}]]></Details>
+								<Child ID="5603_op93_node">
+									<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5602_op89" Type="Executed" PlanType="Column">
+							<RootRelation ID="5602_op89_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[VectorGroupByMergeScheduler]]></Name>
+								<Summary><![CDATA[VectorGroupBy Scheduler [Merge Phase]]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652184459,"end":1793000652184530}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.005</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 19":"numUsedLocalContexts 1, CPUTime 0.005 ms, CPUWaitTime 0.000 ms, calls 1","Number of Tasks produced":"1","operatorId":"89"}]]></Details>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5599_op96" Type="Executed" PlanType="Column">
+							<RootRelation ID="5599_op96_node" Status="NotStarted" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[LlangOutOperator]]></Name>
+								<Summary><![CDATA[Code-generated operator across relations <see next op>]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<UserCPUTime Unit="ms">0.000</UserCPUTime>
+								<EstimatedOutputCardinality>57</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"0","calls":"0","Estimated Output Cardinality":"57","index predicate":"DIM_SITE.SITE_ID (NOSOURCE-PARTVALUEID) = FACT_TELEMETRY.SITE_ID (PARTVALUEID)","index predicate_1":"DIM_METRIC.METRIC_ID (NOSOURCE-PARTVALUEID) = FACT_TELEMETRY.METRIC_ID (PARTVALUEID)"}]]></Details>
+								<Child ID="5604_op96_node">
+									<Details><![CDATA[{"ConnectionType":"Logical"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5605_op87" Type="Executed" PlanType="Column">
+							<RootRelation ID="5605_op87_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[LlangOperatorWithRetry<LlangInOperator>]]></Name>
+								<Summary><![CDATA[<Mark right matching rows preamble>; <Lookup rows in column index>; <Produce right matching rows>; <Materialize: DIM_METRIC.METRIC_NAME (VALUEID), DIM_METRIC.UNIT_OF_MEASURE (VALUEID)>; <Vector GroupBy [Insert Phase]>]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652184215,"end":1793000652184350}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.014</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"4","pipeline 18":"numUsedLocalContexts 1, CPUTime 0.014 ms, CPUWaitTime 0.000 ms, calls 4","InitLocal CPUTime":"0.001 ms","InitLocal CPUWaitTime":"0.000 ms","JIT cache hit":"yes","JIT compile status":"Compiled (Policy: MediumCardinality)","JIT effective line count":"290","JIT opt level":"O2","Memory Allocated":"0.020 MiB","Number of PayloadHandlers: ":"16","Rows per PayloadHandler: ":"512","index predicate":"DIM_SITE.SITE_ID (NOSOURCE-PARTVALUEID) = FACT_TELEMETRY.SITE_ID (PARTVALUEID)","index predicate_1":"DIM_METRIC.METRIC_ID (NOSOURCE-PARTVALUEID) = FACT_TELEMETRY.METRIC_ID (PARTVALUEID)","operatorId":"87"}]]></Details>
+								<Child ID="5606_op87_node">
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5607_op85" Type="Executed" PlanType="Column">
+							<RootRelation ID="5607_op85_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[PartVidGroupingOffsetsInitOp]]></Name>
+								<Summary><![CDATA[InitOp for PartValueId grouping offsets]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652184336,"end":1793000652184350}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.001</UserCPUTime>
+								<EstimatedOutputCardinality>57</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"4","pipeline 18":"numUsedLocalContexts 1, CPUTime 0.001 ms, CPUWaitTime 0.000 ms, calls 4","Estimated Output Cardinality":"57","operatorId":"85"}]]></Details>
+								<Child ID="5608_op82_node">
+									<ExecutedOutputCardinality>58</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+					</InnerPlans>
+				</RootRelation>
+			</Plan>
+			<Plan ID="5609_group15" Type="Executed" PlanType="Column">
+				<RootRelation ID="5609_group15_node" Status="Finished" Physical="True" TypeName="HEX INDEX JOIN (LEFT OUTER)">
+					<Name><![CDATA[INDEX JOIN (LEFT OUTER)]]></Name>
+					<Summary><![CDATA[MANY-TO-ONE INDEX JOIN CONDITION: FACT_TELEMETRY.METRIC_ID = DIM_METRIC.METRIC_ID, RIGHT SIDE INDEX]]></Summary>
+					<TableType><![CDATA[COLUMN TABLE]]></TableType>
+					<Schema><![CDATA[IOT_DEVICE_ANALYTICS_HDI_DB_1]]></Schema>
+					<ObjectName><![CDATA[DIM_METRIC]]></ObjectName>
+					<ExecutionTime>
+						<Timestamps>[{"Pop":[{"start":1793000652182352,"end":1793000652184239}]}]</Timestamps>
+					</ExecutionTime>
+					<UserCPUTime Unit="ms">0.175</UserCPUTime>
+					<Details><![CDATA[{"max numUsedLocalContexts":"1","Active Table Fragments":"DIM_METRIC~main","Table Constraints":"DIM_METRIC.METRIC_NAME[MinMax(0, 2, ValueId), NotNull], DIM_METRIC.UNIT_OF_MEASURE[MinMax(0, 2, ValueId), NotNull], FACT_TELEMETRY.METRIC_ID[MinMax(0, 3, ValueId)]","Est. Intermediate Cardinality":"59.9999","Est. Output Cardinality":"59.9999","Est. Right Side Input Cardinality":"59.9999","Estimated Output Cardinality":"60","Estimated Output Cardinality_1":"2","Memory Allocated":"0.007 MiB","Operator Specific Partition Info":"{\"Indexed Table Logical Partition Info\": (empty)}","Output Spec":"[DocId, ValueId] SITE_NAME NVARCHAR(100), [DocId, ValueId] METRIC_NAME NVARCHAR(50), [DocId, ValueId] UNIT_OF_MEASURE NVARCHAR(10), [Value] ? FIXED8(18, 2), [Value] ? FIXED8(10, 2), [Value] ? FIXED8(10, 2), [Value] ? BIGINT","index predicate":"DIM_METRIC.METRIC_ID (NOSOURCE-PARTVALUEID) = FACT_TELEMETRY.METRIC_ID (PARTVALUEID)"}]]></Details>
+					<InnerPlans>
+						<Plan ID="5610_op111" Type="Executed" PlanType="Column">
+							<RootRelation ID="5610_op111_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[CopyOp]]></Name>
+								<Summary><![CDATA[Copies input to the output 1:1]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652184258,"end":1793000652184324}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.066</UserCPUTime>
+								<EstimatedOutputCardinality>60</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"4","pipeline 18":"numUsedLocalContexts 1, CPUTime 0.066 ms, CPUWaitTime 0.000 ms, calls 4","Estimated Output Cardinality":"60","operatorId":"111"}]]></Details>
+								<Child ID="5611_op81_node">
+									<ExecutedOutputCardinality>58</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5606_op87" Type="Executed" PlanType="Column">
+							<RootRelation ID="5606_op87_node" Status="NotStarted" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[LlangOperatorWithRetry<LlangInOperator>]]></Name>
+								<Summary><![CDATA[Code-generated operator across relations <see next op>]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<UserCPUTime Unit="ms">0.000</UserCPUTime>
+								<EstimatedOutputCardinality>60</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"0","calls":"0","Estimated Output Cardinality":"60","index predicate":"DIM_SITE.SITE_ID (NOSOURCE-PARTVALUEID) = FACT_TELEMETRY.SITE_ID (PARTVALUEID)","index predicate_1":"DIM_METRIC.METRIC_ID (NOSOURCE-PARTVALUEID) = FACT_TELEMETRY.METRIC_ID (PARTVALUEID)"}]]></Details>
+								<Child ID="5612_op87_node">
+									<Details><![CDATA[{"ConnectionType":"Logical"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5608_op82" Type="Executed" PlanType="Column">
+							<RootRelation ID="5608_op82_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[IndexJoinBlockingOp]]></Name>
+								<Summary><![CDATA[]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652184206,"end":1793000652184350}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.011</UserCPUTime>
+								<EstimatedOutputCardinality>60</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"4","pipeline 18":"numUsedLocalContexts 1, CPUTime 0.011 ms, CPUWaitTime 0.000 ms, calls 4","Init CPUTime":"0.001 ms","Init CPUWaitTime":"0.000 ms","InitLocal CPUTime":"0.001 ms","InitLocal CPUWaitTime":"0.000 ms","OnTaskEnd CPUTime":"0.009 ms","OnTaskEnd CPUWaitTime":"0.000 ms","Estimated Output Cardinality":"60","Index Lookup Result Size":"58","Table Constraints":"DIM_METRIC.METRIC_NAME[MinMax(0, 2, ValueId), NotNull], DIM_METRIC.UNIT_OF_MEASURE[MinMax(0, 2, ValueId), NotNull]","operatorId":"82"}]]></Details>
+								<Child ID="5610_op111_node">
+									<ExecutedOutputCardinality>58</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5611_op81" Type="Executed" PlanType="Column">
+							<RootRelation ID="5611_op81_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[TranslationOp]]></Name>
+								<Summary><![CDATA[]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652184203,"end":1793000652184324}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.007</UserCPUTime>
+								<EstimatedOutputCardinality>60</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"4","pipeline 18":"numUsedLocalContexts 1, CPUTime 0.007 ms, CPUWaitTime 0.000 ms, calls 4","InitLocal CPUTime":"0.002 ms","InitLocal CPUWaitTime":"0.000 ms","OnTaskEnd CPUTime":"0.004 ms","OnTaskEnd CPUWaitTime":"0.000 ms","Estimated Output Cardinality":"60","Memory Allocated":"0.007 MiB","operatorId":"81"}]]></Details>
+								<Child ID="5613_op3_node">
+									<Details><![CDATA[{"ConnectionType":"Logical"}]]></Details>
+								</Child>
+								<Child ID="5614_op80_node">
+									<ExecutedOutputCardinality>58</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5612_op87" Type="Executed" PlanType="Column">
+							<RootRelation ID="5612_op87_node" Status="NotStarted" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[LlangOperatorWithRetry<LlangInOperator>]]></Name>
+								<Summary><![CDATA[Code-generated operator across relations <see next op>]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<UserCPUTime Unit="ms">0.000</UserCPUTime>
+								<EstimatedOutputCardinality>60</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"0","calls":"0","Estimated Output Cardinality":"60","index predicate":"DIM_SITE.SITE_ID (NOSOURCE-PARTVALUEID) = FACT_TELEMETRY.SITE_ID (PARTVALUEID)","index predicate_1":"DIM_METRIC.METRIC_ID (NOSOURCE-PARTVALUEID) = FACT_TELEMETRY.METRIC_ID (PARTVALUEID)"}]]></Details>
+								<Child ID="5607_op85_node">
+									<ExecutedOutputCardinality>58</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5614_op80" Type="Executed" PlanType="Column">
+							<RootRelation ID="5614_op80_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[LlangOperatorWithRetry<LlangOutOperator>]]></Name>
+								<Summary><![CDATA[<Materialize VectorGroupBy Results>; <Materialize: FACT_TELEMETRY.METRIC_ID (PARTVALUEID)>]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652184201,"end":1793000652184239}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.013</UserCPUTime>
+								<EstimatedOutputCardinality>60</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 18":"numUsedLocalContexts 1, CPUTime 0.013 ms, CPUWaitTime 0.000 ms, calls 1","InitLocal CPUTime":"0.002 ms","InitLocal CPUWaitTime":"0.000 ms","Estimated Output Cardinality":"60","JIT cache hit":"yes","JIT compile status":"Compiled (Policy: MediumCardinality)","JIT effective line count":"171","JIT opt level":"O2","index predicate":"DIM_SITE.SITE_ID (NOSOURCE-PARTVALUEID) = FACT_TELEMETRY.SITE_ID (PARTVALUEID)","operatorId":"80"}]]></Details>
+								<Child ID="5615_op80_node">
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5616_op2" Type="Executed" PlanType="Column">
+							<RootRelation ID="5616_op2_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[TranslationInfoProviderOp]]></Name>
+								<Summary><![CDATA[]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652182352,"end":1793000652182429}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.074</UserCPUTime>
+								<EstimatedOutputCardinality>2</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 1":"numUsedLocalContexts 1, CPUTime 0.074 ms, CPUWaitTime 0.000 ms, calls 1","Estimated Output Cardinality":"2","Table Constraints":"DIM_METRIC.METRIC_NAME[MinMax(0, 2, ValueId), NotNull], DIM_METRIC.UNIT_OF_MEASURE[MinMax(0, 2, ValueId), NotNull], FACT_TELEMETRY.METRIC_ID[MinMax(0, 3, ValueId)]","operatorId":"2"}]]></Details>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5613_op3" Type="Executed" PlanType="Column">
+							<RootRelation ID="5613_op3_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[TranslationInfoCollectorOp]]></Name>
+								<Summary><![CDATA[]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652182426,"end":1793000652182449}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.004</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 1":"numUsedLocalContexts 1, CPUTime 0.004 ms, CPUWaitTime 0.000 ms, calls 1","Finish CPUTime":"0.001 ms","Finish CPUWaitTime":"0.000 ms","operatorId":"3"}]]></Details>
+								<Child ID="5616_op2_node">
+									<ExecutedOutputCardinality>2</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+					</InnerPlans>
+				</RootRelation>
+			</Plan>
+			<Plan ID="5617_group16" Type="Executed" PlanType="Column">
+				<RootRelation ID="5617_group16_node" Status="Finished" Physical="True" TypeName="HEX AGGREGATION">
+					<Name><![CDATA[AGGREGATION]]></Name>
+					<Summary><![CDATA[GROUPING: DIM_SITE.SITE_NAME, FACT_TELEMETRY.METRIC_ID, AGGREGATION: SUM(FACT_TELEMETRY.METRIC_VALUE), MIN(FACT_TELEMETRY.METRIC_VALUE), MAX(FACT_TELEMETRY.METRIC_VALUE), COUNT(FACT_TELEMETRY.METRIC_VALUE)]]></Summary>
+					<ExecutionTime>
+						<Timestamps>[{"Pop":[{"start":1793000652183919,"end":1793000652184241}]}]</Timestamps>
+					</ExecutionTime>
+					<UserCPUTime Unit="ms">0.063</UserCPUTime>
+					<Details><![CDATA[{"max numUsedLocalContexts":"1","BitwiseValueBlender":"BitwiseValueBlender{ typeDefs: [VALUEID, VALUEID NOT NULL], min: [0, 0], shift: [0, 5], mask: [0x1f, 0x3] }","Estimated Output Cardinality":"60","HashColumn(0)":"DIM_SITE.SITE_NAME (VALUEID)","HashColumn(1)":"FACT_TELEMETRY.METRIC_ID (VALUEID)","Memory Allocated":"0.005 MiB","Output Spec":"[DocId, ValueId] SITE_NAME NVARCHAR(100), [DocId, ValueId] METRIC_ID NVARCHAR(10), [Value] ? FIXED8(18, 2), [Value] ? FIXED8(10, 2), [Value] ? FIXED8(10, 2), [Value] ? BIGINT","agg(0)":"Max(FACT_TELEMETRY.METRIC_VALUE (FIXED8(10, 2))) -> 1000021.10000002 (FIXED8(10, 2))","agg(1)":"Min(FACT_TELEMETRY.METRIC_VALUE (FIXED8(10, 2))) -> 1000021.10000001 (FIXED8(10, 2))","agg(2)":"Count(FACT_TELEMETRY.METRIC_VALUE (FIXED8(10, 2))) -> 1000021.10000003 (BIGINT NOT NULL)","agg(3)":"Sum(FACT_TELEMETRY.METRIC_VALUE (FIXED8(10, 2))) -> 1000021.10000000 (FIXED8(18, 2))","rowWidth":"40"}]]></Details>
+					<InnerPlans>
+						<Plan ID="5618_op77" Type="Executed" PlanType="Column">
+							<RootRelation ID="5618_op77_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[LlangNoDataOperator]]></Name>
+								<Summary><![CDATA[<Vector GroupBy [Merge Phase]>]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652184197,"end":1793000652184239}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.005</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 18":"numUsedLocalContexts 1, CPUTime 0.005 ms, CPUWaitTime 0.000 ms, calls 1","InitLocal CPUTime":"0.002 ms","InitLocal CPUWaitTime":"0.000 ms","JIT cache hit":"yes","JIT compile status":"Compiled (Policy: MediumCardinality)","JIT effective line count":"162","JIT opt level":"O2","TaskStats from op: 104":"count = 0, parentOpId: 4294967295","index predicate":"DIM_SITE.SITE_ID (NOSOURCE-PARTVALUEID) = FACT_TELEMETRY.SITE_ID (PARTVALUEID)","operatorId":"77"}]]></Details>
+								<Child ID="5619_op73_node">
+									<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5620_op74" Type="Executed" PlanType="Column">
+							<RootRelation ID="5620_op74_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[EnforceCompilationByThresholdOpT<>]]></Name>
+								<Summary><![CDATA[]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652184220,"end":1793000652184221}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.001</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 18":"numUsedLocalContexts 1, CPUTime 0.001 ms, CPUWaitTime 0.000 ms, calls 1","TaskStats from op: 105":"count = 0, parentOpId: 4294967295","operatorId":"74"}]]></Details>
+								<Child ID="5619_op73_node">
+									<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5619_op73" Type="Executed" PlanType="Column">
+							<RootRelation ID="5619_op73_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[VectorGroupByMergeScheduler]]></Name>
+								<Summary><![CDATA[VectorGroupBy Scheduler [Merge Phase]]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652184217,"end":1793000652184241}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.007</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 18":"numUsedLocalContexts 1, CPUTime 0.007 ms, CPUWaitTime 0.000 ms, calls 1","Number of Tasks produced":"1","operatorId":"73"}]]></Details>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5615_op80" Type="Executed" PlanType="Column">
+							<RootRelation ID="5615_op80_node" Status="NotStarted" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[LlangOperatorWithRetry<LlangOutOperator>]]></Name>
+								<Summary><![CDATA[Code-generated operator across relations <see next op>]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<UserCPUTime Unit="ms">0.000</UserCPUTime>
+								<EstimatedOutputCardinality>60</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"0","calls":"0","Estimated Output Cardinality":"60","index predicate":"DIM_SITE.SITE_ID (NOSOURCE-PARTVALUEID) = FACT_TELEMETRY.SITE_ID (PARTVALUEID)"}]]></Details>
+								<Child ID="5618_op77_node">
+									<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5621_op69" Type="Executed" PlanType="Column">
+							<RootRelation ID="5621_op69_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[PartVidGroupingOffsetsInitOp]]></Name>
+								<Summary><![CDATA[InitOp for PartValueId grouping offsets]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652184005,"end":1793000652184108}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.003</UserCPUTime>
+								<EstimatedOutputCardinality>60</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"2","pipeline 16":"numUsedLocalContexts 1, CPUTime 0.003 ms, CPUWaitTime 0.000 ms, calls 2","pipeline 17":"numUsedLocalContexts 0, CPUTime 0.000 ms, CPUWaitTime 0.000 ms, calls 0","Estimated Output Cardinality":"60","operatorId":"69"}]]></Details>
+								<Child ID="5622_op65_node">
+									<ExecutedOutputCardinality>342</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5623_op71" Type="Executed" PlanType="Column">
+							<RootRelation ID="5623_op71_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[LlangOperatorWithRetry<LlangInOperator>]]></Name>
+								<Summary><![CDATA[<Mark right matching rows preamble>; <Lookup rows in column index>; <Produce right matching rows>; <Materialize: DIM_SITE.SITE_NAME (VALUEID), FACT_TELEMETRY.METRIC_ID (VALUEID), FACT_TELEMETRY.METRIC_VALUE (FIXED8(10, 2))>; <Vector GroupBy [Insert Phase]>]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652183919,"end":1793000652184108}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.047</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"2","pipeline 16":"numUsedLocalContexts 1, CPUTime 0.047 ms, CPUWaitTime 0.000 ms, calls 2","pipeline 17":"numUsedLocalContexts 0, CPUTime 0.000 ms, CPUWaitTime 0.000 ms, calls 0","InitLocal CPUTime":"0.001 ms","InitLocal CPUWaitTime":"0.000 ms","JIT cache hit":"yes","JIT compile status":"Compiled (Policy: MediumCardinality)","JIT effective line count":"266","JIT opt level":"O2","Memory Allocated":"0.005 MiB","Number of PayloadHandlers: ":"16","Rows per PayloadHandler: ":"128","index predicate":"DIM_SITE.SITE_ID (NOSOURCE-PARTVALUEID) = FACT_TELEMETRY.SITE_ID (PARTVALUEID)","operatorId":"71"}]]></Details>
+								<Child ID="5624_op71_node">
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+					</InnerPlans>
+				</RootRelation>
+			</Plan>
+			<Plan ID="5625_group17" Type="Executed" PlanType="Column">
+				<RootRelation ID="5625_group17_node" Status="Finished" Physical="True" TypeName="HEX INDEX JOIN (LEFT OUTER)">
+					<Name><![CDATA[INDEX JOIN (LEFT OUTER)]]></Name>
+					<Summary><![CDATA[MANY-TO-ONE INDEX JOIN CONDITION: FACT_TELEMETRY.SITE_ID = DIM_SITE.SITE_ID, RIGHT SIDE INDEX]]></Summary>
+					<TableType><![CDATA[COLUMN TABLE]]></TableType>
+					<Schema><![CDATA[IOT_DEVICE_ANALYTICS_HDI_DB_1]]></Schema>
+					<ObjectName><![CDATA[DIM_SITE]]></ObjectName>
+					<ExecutionTime>
+						<Timestamps>[{"Pop":[{"start":1793000652182451,"end":1793000652184054}]}]</Timestamps>
+					</ExecutionTime>
+					<UserCPUTime Unit="ms">0.112</UserCPUTime>
+					<Details><![CDATA[{"max numUsedLocalContexts":"1","Active Table Fragments":"DIM_SITE~main","Table Constraints":"DIM_SITE.SITE_NAME[MinMax(0, 30, ValueId), NotNull], FACT_TELEMETRY.METRIC_ID[MinMax(0, 3, ValueId)]","Est. Intermediate Cardinality":"323.58","Est. Output Cardinality":"323.58","Est. Right Side Input Cardinality":"323.58","Estimated Output Cardinality":"324","Estimated Output Cardinality_1":"2","Memory Allocated":"0.004 MiB","Operator Specific Partition Info":"{\"Indexed Table Logical Partition Info\": (empty)}","Output Spec":"[DocId, ValueId] SITE_NAME NVARCHAR(100), [DocId, ValueId] METRIC_ID NVARCHAR(10), [DocId, Value] METRIC_VALUE FIXED8(10, 2)","index predicate":"DIM_SITE.SITE_ID (NOSOURCE-PARTVALUEID) = FACT_TELEMETRY.SITE_ID (PARTVALUEID)"}]]></Details>
+					<InnerPlans>
+						<Plan ID="5626_op5" Type="Executed" PlanType="Column">
+							<RootRelation ID="5626_op5_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[TranslationInfoCollectorOp]]></Name>
+								<Summary><![CDATA[]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652182474,"end":1793000652182483}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.002</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 2":"numUsedLocalContexts 1, CPUTime 0.002 ms, CPUWaitTime 0.000 ms, calls 1","Finish CPUTime":"0.001 ms","Finish CPUWaitTime":"0.000 ms","operatorId":"5"}]]></Details>
+								<Child ID="5627_op4_node">
+									<ExecutedOutputCardinality>2</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5628_op110" Type="Executed" PlanType="Column">
+							<RootRelation ID="5628_op110_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[CopyOp]]></Name>
+								<Summary><![CDATA[Copies input to the output 1:1]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652183988,"end":1793000652184067}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.008</UserCPUTime>
+								<EstimatedOutputCardinality>324</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"2","pipeline 16":"numUsedLocalContexts 1, CPUTime 0.008 ms, CPUWaitTime 0.000 ms, calls 2","pipeline 17":"numUsedLocalContexts 0, CPUTime 0.000 ms, CPUWaitTime 0.000 ms, calls 0","Estimated Output Cardinality":"324","operatorId":"110"}]]></Details>
+								<Child ID="5629_op64_node">
+									<ExecutedOutputCardinality>342</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5630_op63" Type="Executed" PlanType="Column">
+							<RootRelation ID="5630_op63_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[LlangOperatorWithRetry<LlangInOutOperator>]]></Name>
+								<Summary><![CDATA[<Materialize: FACT_TELEMETRY.SITE_ID (VALUEID)>; <Materialize: FACT_TELEMETRY.SITE_ID (PARTVALUEID)>]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652183897,"end":1793000652184054}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.027</UserCPUTime>
+								<EstimatedOutputCardinality>324</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"2","pipeline 16":"numUsedLocalContexts 1, CPUTime 0.027 ms, CPUWaitTime 0.000 ms, calls 2","pipeline 17":"numUsedLocalContexts 0, CPUTime 0.000 ms, CPUWaitTime 0.000 ms, calls 0","InitLocal CPUTime":"0.002 ms","InitLocal CPUWaitTime":"0.000 ms","Estimated Output Cardinality":"324","JIT cache hit":"yes","JIT compile status":"Compiled (Policy: MediumCardinality)","JIT effective line count":"67","JIT opt level":"O2","operatorId":"63"}]]></Details>
+								<Child ID="5631_op63_node">
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5622_op65" Type="Executed" PlanType="Column">
+							<RootRelation ID="5622_op65_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[IndexJoinBlockingOp]]></Name>
+								<Summary><![CDATA[]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652183902,"end":1793000652184110},{"start":1793000652184165,"end":1793000652184167}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.038</UserCPUTime>
+								<EstimatedOutputCardinality>324</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"2","pipeline 16":"numUsedLocalContexts 1, CPUTime 0.036 ms, CPUWaitTime 0.000 ms, calls 2","pipeline 17":"numUsedLocalContexts 1, CPUTime 0.002 ms, CPUWaitTime 0.000 ms, calls 0","Init CPUTime":"0.001 ms","Init CPUWaitTime":"0.000 ms","InitLocal CPUTime":"0.000 ms","InitLocal CPUWaitTime":"0.000 ms","OnTaskEnd CPUTime":"0.036 ms","OnTaskEnd CPUWaitTime":"0.000 ms","Estimated Output Cardinality":"324","Index Lookup Result Size":"342","Table Constraints":"DIM_SITE.SITE_NAME[MinMax(0, 30, ValueId), NotNull]","operatorId":"65"}]]></Details>
+								<Child ID="5628_op110_node">
+									<ExecutedOutputCardinality>342</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5629_op64" Type="Executed" PlanType="Column">
+							<RootRelation ID="5629_op64_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[TranslationOp]]></Name>
+								<Summary><![CDATA[]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652183900,"end":1793000652184067},{"start":1793000652184162,"end":1793000652184163}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.014</UserCPUTime>
+								<EstimatedOutputCardinality>324</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"2","pipeline 16":"numUsedLocalContexts 1, CPUTime 0.013 ms, CPUWaitTime 0.000 ms, calls 2","pipeline 17":"numUsedLocalContexts 1, CPUTime 0.001 ms, CPUWaitTime 0.000 ms, calls 0","InitLocal CPUTime":"0.001 ms","InitLocal CPUWaitTime":"0.000 ms","OnTaskEnd CPUTime":"0.012 ms","OnTaskEnd CPUWaitTime":"0.000 ms","Estimated Output Cardinality":"324","Memory Allocated":"0.004 MiB","operatorId":"64"}]]></Details>
+								<Child ID="5626_op5_node">
+									<Details><![CDATA[{"ConnectionType":"Logical"}]]></Details>
+								</Child>
+								<Child ID="5630_op63_node">
+									<ExecutedOutputCardinality>342</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5627_op4" Type="Executed" PlanType="Column">
+							<RootRelation ID="5627_op4_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[TranslationInfoProviderOp]]></Name>
+								<Summary><![CDATA[]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652182451,"end":1793000652182475}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.023</UserCPUTime>
+								<EstimatedOutputCardinality>2</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 2":"numUsedLocalContexts 1, CPUTime 0.023 ms, CPUWaitTime 0.000 ms, calls 1","Estimated Output Cardinality":"2","Table Constraints":"DIM_SITE.SITE_NAME[MinMax(0, 30, ValueId), NotNull], FACT_TELEMETRY.METRIC_ID[MinMax(0, 3, ValueId)]","operatorId":"4"}]]></Details>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5632_op71" Type="Executed" PlanType="Column">
+							<RootRelation ID="5632_op71_node" Status="NotStarted" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[LlangOperatorWithRetry<LlangInOperator>]]></Name>
+								<Summary><![CDATA[Code-generated operator across relations <see next op>]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<UserCPUTime Unit="ms">0.000</UserCPUTime>
+								<EstimatedOutputCardinality>324</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"0","calls":"0","Estimated Output Cardinality":"324","index predicate":"DIM_SITE.SITE_ID (NOSOURCE-PARTVALUEID) = FACT_TELEMETRY.SITE_ID (PARTVALUEID)"}]]></Details>
+								<Child ID="5621_op69_node">
+									<ExecutedOutputCardinality>342</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5624_op71" Type="Executed" PlanType="Column">
+							<RootRelation ID="5624_op71_node" Status="NotStarted" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[LlangOperatorWithRetry<LlangInOperator>]]></Name>
+								<Summary><![CDATA[Code-generated operator across relations <see next op>]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<UserCPUTime Unit="ms">0.000</UserCPUTime>
+								<EstimatedOutputCardinality>324</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"0","calls":"0","Estimated Output Cardinality":"324","index predicate":"DIM_SITE.SITE_ID (NOSOURCE-PARTVALUEID) = FACT_TELEMETRY.SITE_ID (PARTVALUEID)"}]]></Details>
+								<Child ID="5632_op71_node">
+									<Details><![CDATA[{"ConnectionType":"Logical"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+					</InnerPlans>
+				</RootRelation>
+			</Plan>
+			<Plan ID="5633_group18" Type="Executed" PlanType="Column">
+				<RootRelation ID="5633_group18_node" Status="Finished" Physical="True" TypeName="HEX TABLE SCAN SEMI JOIN">
+					<Name><![CDATA[TABLE SCAN SEMI JOIN]]></Name>
+					<Summary><![CDATA[JOIN CONDITION: MANY-TO-ONE FACT_TELEMETRY.DATETIME_ID = DIM_DATETIME.DATETIME_ID]]></Summary>
+					<TableType><![CDATA[COLUMN TABLE]]></TableType>
+					<Schema><![CDATA[IOT_DEVICE_ANALYTICS_HDI_DB_1]]></Schema>
+					<ObjectName><![CDATA[FACT_TELEMETRY]]></ObjectName>
+					<ExecutionTime>
+						<Timestamps>[{"Pop":[{"start":1793000652182485,"end":1793000652183297}]}]</Timestamps>
+					</ExecutionTime>
+					<UserCPUTime Unit="ms">0.423</UserCPUTime>
+					<Details><![CDATA[{"max numUsedLocalContexts":"1","Active Table Fragments":"FACT_TELEMETRY~main","Table Constraints":"FACT_TELEMETRY.METRIC_ID[MinMax(0, 3, ValueId)]","Estimated Output Cardinality":"324","Estimated Output Cardinality_1":"29624","Estimated Output Cardinality_2":"2","Filter":"ValueIdList(DIM_DATETIME.DATETIME_ID (PARTVALUEID), FACT_TELEMETRY.DATETIME_ID (VALUEID))","Memory Allocated":"0.004 MiB","Operator Specific Partition Info":"{\"Table Logical Partition Info\": (empty)}","Output Spec":"[DocId] METRIC_ID NVARCHAR(10), [DocId, ValueId] SITE_ID NVARCHAR(32), [DocId] METRIC_VALUE FIXED8(10, 2)","Runtime constant condition":"<empty>"}]]></Details>
+					<InnerPlans>
+						<Plan ID="5634_group7" Type="Executed" PlanType="Column">
+							<RootRelation ID="5634_group7_node" Status="Finished" Physical="True" TypeName="HEX GROUP">
+								<Name><![CDATA[TableScanControl]]></Name>
+								<Summary><![CDATA[]]></Summary>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652183827,"end":1793000652183877}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.061</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","Table Constraints":"FACT_TELEMETRY.METRIC_ID[MinMax(0, 3, ValueId)]","LogicalGroupId":"7"}]]></Details>
+								<InnerPlans>
+									<Plan ID="5635_op47" Type="Executed" PlanType="Column">
+										<RootRelation ID="5635_op47_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+											<Name><![CDATA[TableScanScheduleOp]]></Name>
+											<Summary><![CDATA[Schedule table scan tasks on IOT_DEVICE_ANALYTICS_HDI_DB_1.FACT_TELEMETRY of group 7]]></Summary>
+											<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+											<ExecutionTime>
+												<Timestamps>[{"Pop":[{"start":1793000652183878,"end":1793000652184116}]}]</Timestamps>
+											</ExecutionTime>
+											<UserCPUTime Unit="ms">0.053</UserCPUTime>
+											<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 16":"numUsedLocalContexts 1, CPUTime 0.053 ms, CPUWaitTime 0.000 ms, calls 1","InitLocal CPUTime":"0.042 ms","InitLocal CPUWaitTime":"0.000 ms","operatorId":"47"}]]></Details>
+										</RootRelation>
+									</Plan>
+									<Plan ID="5636_op45" Type="Executed" PlanType="Column">
+										<RootRelation ID="5636_op45_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+											<Name><![CDATA[TableScanInitScheduleOp]]></Name>
+											<Summary><![CDATA[Schedule table scan initialization tasks on IOT_DEVICE_ANALYTICS_HDI_DB_1.FACT_TELEMETRY of group 7]]></Summary>
+											<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+											<ExecutionTime>
+												<Timestamps>[{"Pop":[{"start":1793000652183835,"end":1793000652183864}]}]</Timestamps>
+											</ExecutionTime>
+											<UserCPUTime Unit="ms">0.003</UserCPUTime>
+											<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 14":"numUsedLocalContexts 1, CPUTime 0.003 ms, CPUWaitTime 0.000 ms, calls 1","operatorId":"45"}]]></Details>
+										</RootRelation>
+									</Plan>
+									<Plan ID="5637_op44" Type="Executed" PlanType="Column">
+										<RootRelation ID="5637_op44_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+											<Name><![CDATA[OpenFragmentsOp<0u>]]></Name>
+											<Summary><![CDATA[Open Fragments IOT_DEVICE_ANALYTICS_HDI_DB_1.FACT_TELEMETRY~main, ~delta1, ~delta2]]></Summary>
+											<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+											<ExecutionTime>
+												<Timestamps>[{"Pop":[{"start":1793000652183829,"end":1793000652183830}]}]</Timestamps>
+											</ExecutionTime>
+											<UserCPUTime Unit="ms">0.001</UserCPUTime>
+											<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 13":"numUsedLocalContexts 1, CPUTime 0.001 ms, CPUWaitTime 0.000 ms, calls 1","Table Constraints":"FACT_TELEMETRY.METRIC_ID[MinMax(0, 3, ValueId)]","operatorId":"44"}]]></Details>
+											<Child ID="5638_op43_node">
+												<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+												<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+											</Child>
+										</RootRelation>
+									</Plan>
+									<Plan ID="5639_op46" Type="Executed" PlanType="Column">
+										<RootRelation ID="5639_op46_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+											<Name><![CDATA[TableScanIndexLookupScheduleOp]]></Name>
+											<Summary><![CDATA[Schedule table scan index lookup tasks on IOT_DEVICE_ANALYTICS_HDI_DB_1.FACT_TELEMETRY]]></Summary>
+											<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+											<ExecutionTime>
+												<Timestamps>[{"Pop":[{"start":1793000652183869,"end":1793000652183877}]}]</Timestamps>
+											</ExecutionTime>
+											<UserCPUTime Unit="ms">0.002</UserCPUTime>
+											<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 15":"numUsedLocalContexts 1, CPUTime 0.002 ms, CPUWaitTime 0.000 ms, calls 1","operatorId":"46"}]]></Details>
+										</RootRelation>
+									</Plan>
+									<Plan ID="5638_op43" Type="Executed" PlanType="Column">
+										<RootRelation ID="5638_op43_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+											<Name><![CDATA[OpenFragmentsControlOp]]></Name>
+											<Summary><![CDATA[]]></Summary>
+											<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+											<ExecutionTime>
+												<Timestamps>[{"Pop":[{"start":1793000652183827,"end":1793000652183830}]}]</Timestamps>
+											</ExecutionTime>
+											<UserCPUTime Unit="ms">0.002</UserCPUTime>
+											<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 13":"numUsedLocalContexts 1, CPUTime 0.002 ms, CPUWaitTime 0.000 ms, calls 1","operatorId":"43"}]]></Details>
+										</RootRelation>
+									</Plan>
+								</InnerPlans>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5640_group8" Type="Executed" PlanType="Column">
+							<RootRelation ID="5640_group8_node" Status="Finished" Physical="True" TypeName="HEX GROUP">
+								<Name><![CDATA[FACT_TELEMETRY[~main, ~delta1, ~delta2]]]></Name>
+								<Summary><![CDATA[ValueIdList(DIM_DATETIME.DATETIME_ID (PARTVALUEID), FACT_TELEMETRY.DATETIME_ID (VALUEID))]]></Summary>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652183837,"end":1793000652183967}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.072</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","Active Table Fragments":"FACT_TELEMETRY~main","LogicalGroupId":"8"}]]></Details>
+								<InnerPlans>
+									<Plan ID="5641_group10" Type="Executed" PlanType="Column">
+										<RootRelation ID="5641_group10_node" Status="Finished" Physical="True" TypeName="HEX GROUP">
+											<Name><![CDATA[Visibility]]></Name>
+											<Summary><![CDATA[Postfilter]]></Summary>
+											<ExecutionTime>
+												<Timestamps>[{"Pop":[{"start":1793000652183839,"end":1793000652183970}]}]</Timestamps>
+											</ExecutionTime>
+											<UserCPUTime Unit="ms">0.025</UserCPUTime>
+											<Details><![CDATA[{"max numUsedLocalContexts":"1","LogicalGroupId":"10"}]]></Details>
+											<InnerPlans>
+												<Plan ID="5642_op57" Type="Executed" PlanType="Column">
+													<RootRelation ID="5642_op57_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+														<Name><![CDATA[VisibilityFilterOp]]></Name>
+														<Summary><![CDATA[Check transactional visibility on IOT_DEVICE_ANALYTICS_HDI_DB_1.FACT_TELEMETRY~main, ~delta1, ~delta2 of group 10]]></Summary>
+														<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1793000652183969,"end":1793000652183970}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.001</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 16":"numUsedLocalContexts 1, CPUTime 0.001 ms, CPUWaitTime 0.000 ms, calls 1","operatorId":"57"}]]></Details>
+													</RootRelation>
+												</Plan>
+												<Plan ID="5643_op51" Type="Executed" PlanType="Column">
+													<RootRelation ID="5643_op51_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+														<Name><![CDATA[PostFilterConjInitOp]]></Name>
+														<Summary><![CDATA[Operate init pipeline for postfilter of group 10]]></Summary>
+														<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1793000652183839,"end":1793000652183860}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.009</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 14":"numUsedLocalContexts 1, CPUTime 0.009 ms, CPUWaitTime 0.000 ms, calls 1","StateAfterRun (~main)":"{InitPipelineState: {AllowedToSkipDictScan: false, DictScanSkipped: false, RowCountEstimation: {calculated 342 rows, not more than 342 rows}, ChunkCapacityBound: 342, LargestIntermediateResult: 0}}","operatorId":"51"}]]></Details>
+														<Child ID="5644_op54_node">
+															<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+															<Details><![CDATA[{"ConnectionType":"Reversed"}]]></Details>
+														</Child>
+														<Child ID="5645_op56_node">
+															<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+															<Details><![CDATA[{"ConnectionType":"Reversed"}]]></Details>
+														</Child>
+													</RootRelation>
+												</Plan>
+												<Plan ID="5646_op52" Type="Executed" PlanType="Column">
+													<RootRelation ID="5646_op52_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+														<Name><![CDATA[PostFilterConjIndexLookupOp]]></Name>
+														<Summary><![CDATA[Operate index lookup pipeline for postfilter of group 10]]></Summary>
+														<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1793000652183872,"end":1793000652183876}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.003</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 15":"numUsedLocalContexts 1, CPUTime 0.003 ms, CPUWaitTime 0.000 ms, calls 1","StateAfterRun (~main)":"{IndexLookupResult: n/a}","operatorId":"52"}]]></Details>
+													</RootRelation>
+												</Plan>
+												<Plan ID="5645_op56" Type="Executed" PlanType="Column">
+													<RootRelation ID="5645_op56_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+														<Name><![CDATA[VisibilityFilterEstimationOp]]></Name>
+														<Summary><![CDATA[Estimate transactional visibility check on IOT_DEVICE_ANALYTICS_HDI_DB_1.FACT_TELEMETRY~main, ~delta1, ~delta2 of group 10]]></Summary>
+														<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1793000652183840,"end":1793000652183852}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.009</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"2","pipeline 14":"numUsedLocalContexts 1, CPUTime 0.009 ms, CPUWaitTime 0.000 ms, calls 2","StateAfterRun (~main)":"{InitPipelineState: {AllowedToSkipDictScan: false, DictScanSkipped: false, RowCountEstimation: {exactly 32358 rows}, ChunkCapacityBound: 32358, LargestIntermediateResult: 0}}","operatorId":"56"}]]></Details>
+													</RootRelation>
+												</Plan>
+												<Plan ID="5647_op53" Type="Executed" PlanType="Column">
+													<RootRelation ID="5647_op53_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+														<Name><![CDATA[PostFilterConjOp]]></Name>
+														<Summary><![CDATA[Operate evaluation pipeline for postfilter of group 10]]></Summary>
+														<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1793000652183927,"end":1793000652183970}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.003</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"3","pipeline 16":"numUsedLocalContexts 1, CPUTime 0.003 ms, CPUWaitTime 0.000 ms, calls 3","operatorId":"53"}]]></Details>
+														<Child ID="5642_op57_node">
+															<ExecutedOutputCardinality>342</ExecutedOutputCardinality>
+															<Details><![CDATA[{"ConnectionType":"Reversed"}]]></Details>
+														</Child>
+														<Child ID="5648_op55_node">
+															<ExecutedOutputCardinality>342</ExecutedOutputCardinality>
+															<Details><![CDATA[{"ConnectionType":"Reversed"}]]></Details>
+														</Child>
+													</RootRelation>
+												</Plan>
+											</InnerPlans>
+										</RootRelation>
+									</Plan>
+									<Plan ID="5649_group9" Type="Executed" PlanType="Column">
+										<RootRelation ID="5649_group9_node" Status="Finished" Physical="True" TypeName="HEX GROUP">
+											<Name><![CDATA[FragmentScan]]></Name>
+											<Summary><![CDATA[]]></Summary>
+											<ExecutionTime>
+												<Timestamps>[{"Pop":[{"start":1793000652183837,"end":1793000652184116}]}]</Timestamps>
+											</ExecutionTime>
+											<UserCPUTime Unit="ms">0.011</UserCPUTime>
+											<Details><![CDATA[{"max numUsedLocalContexts":"1","Active Table Fragments":"FACT_TELEMETRY~main","LogicalGroupId":"9"}]]></Details>
+											<InnerPlans>
+												<Plan ID="5650_op49" Type="Executed" PlanType="Column">
+													<RootRelation ID="5650_op49_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+														<Name><![CDATA[FragmentScanIndexLookupOp]]></Name>
+														<Summary><![CDATA[Operate index lookup pipeline for IOT_DEVICE_ANALYTICS_HDI_DB_1.FACT_TELEMETRY~main, ~delta1, ~delta2 of group 9]]></Summary>
+														<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1793000652183871,"end":1793000652183877}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.002</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 15":"numUsedLocalContexts 1, CPUTime 0.002 ms, CPUWaitTime 0.000 ms, calls 1","StateAfterRun (~main)":"{IndexLookupResult: n/a}","operatorId":"49"}]]></Details>
+														<Child ID="5639_op46_node">
+															<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+															<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+														</Child>
+														<Child ID="5646_op52_node">
+															<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+															<Details><![CDATA[{"ConnectionType":"Reversed"}]]></Details>
+														</Child>
+													</RootRelation>
+												</Plan>
+												<Plan ID="5651_op50" Type="Executed" PlanType="Column">
+													<RootRelation ID="5651_op50_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+														<Name><![CDATA[FragmentScanOp_RpRp]]></Name>
+														<Summary><![CDATA[Operate evaluation pipeline for IOT_DEVICE_ANALYTICS_HDI_DB_1.FACT_TELEMETRY~main, ~delta1, ~delta2 of group 9]]></Summary>
+														<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1793000652183926,"end":1793000652184116}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.004</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"3","pipeline 16":"numUsedLocalContexts 1, CPUTime 0.004 ms, CPUWaitTime 0.000 ms, calls 3","TaskStats from op: 102":"count = 2, min = 2443ns, avg = 6907ns, max = 11371ns,  25%= 2443ns,  50%= 11371ns,  75%= 11371ns, parentOpId: 47\u000aSampling: \u000aOpId: 47 sampleSize: 255 elapsedTimeInNs: 11371 overhead: 0 cpiScalingFactor: 1 currCost: 44.5921 costChangeFactor: 1 TotalCost: 44.5921\u000aOpId: 47 sampleSize: 512 elapsedTimeInNs: 2443 overhead: 0 cpiScalingFactor: 1 currCost: 4.77148 costChangeFactor: 0.892997 TotalCost: 4.77148\u000aOpId: 47 Sampling is finished. TaskSize: 52394 sumElapsed: 13814 timeBudget: 50000 totalCost: 4.77148 cost limit: 30.9042 minCost < costLimit: 1 hasDecidedSequential: 1\u000acalculated cost: 4.77148 for op: 47 taskSize: 52394 will run in seq: 1 forceParallelization: 0 totalRowCount: 32358\u000a","operatorId":"50"}]]></Details>
+														<Child ID="5635_op47_node">
+															<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+															<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+														</Child>
+														<Child ID="5647_op53_node">
+															<ExecutedOutputCardinality>342</ExecutedOutputCardinality>
+															<Details><![CDATA[{"ConnectionType":"Reversed"}]]></Details>
+														</Child>
+													</RootRelation>
+												</Plan>
+												<Plan ID="5652_op48" Type="Executed" PlanType="Column">
+													<RootRelation ID="5652_op48_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+														<Name><![CDATA[FragmentScanInitOp]]></Name>
+														<Summary><![CDATA[Operate init pipeline for IOT_DEVICE_ANALYTICS_HDI_DB_1.FACT_TELEMETRY~main, ~delta1, ~delta2 of group 9]]></Summary>
+														<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1793000652183837,"end":1793000652183863}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.005</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 14":"numUsedLocalContexts 1, CPUTime 0.005 ms, CPUWaitTime 0.000 ms, calls 1","StateAfterRun (~main)":"{InitPipelineState: {AllowedToSkipDictScan: false, DictScanSkipped: false, RowCountEstimation: {calculated 342 rows, not more than 342 rows}, ChunkCapacityBound: 342, LargestIntermediateResult: 0}, Fragment Cardinality: 32358 rows}","operatorId":"48"}]]></Details>
+														<Child ID="5636_op45_node">
+															<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+															<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+														</Child>
+														<Child ID="5643_op51_node">
+															<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+															<Details><![CDATA[{"ConnectionType":"Reversed"}]]></Details>
+														</Child>
+													</RootRelation>
+												</Plan>
+											</InnerPlans>
+										</RootRelation>
+									</Plan>
+									<Plan ID="5653_group11" Type="Executed" PlanType="Column">
+										<RootRelation ID="5653_group11_node" Status="Finished" Physical="True" TypeName="HEX GROUP">
+											<Name><![CDATA[ValueIdList(DIM_DATETIME.DATETIME_ID (PARTVALUEID), FACT_TELEMETRY.DATETIME_ID (VALUEID))]]></Name>
+											<Summary><![CDATA[]]></Summary>
+											<ExecutionTime>
+												<Timestamps>[{"Pop":[{"start":1793000652183844,"end":1793000652183967}]}]</Timestamps>
+											</ExecutionTime>
+											<UserCPUTime Unit="ms">0.036</UserCPUTime>
+											<Details><![CDATA[{"max numUsedLocalContexts":"1","LogicalGroupId":"11"}]]></Details>
+											<InnerPlans>
+												<Plan ID="5648_op55" Type="Executed" PlanType="Column">
+													<RootRelation ID="5648_op55_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+														<Name><![CDATA[PredicateOp]]></Name>
+														<Summary><![CDATA[Data vector scan/lookup on IOT_DEVICE_ANALYTICS_HDI_DB_1.FACT_TELEMETRY~main, ~delta1, ~delta2.DATETIME_ID of group 11]]></Summary>
+														<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1793000652183882,"end":1793000652183967}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.033</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"3","pipeline 16":"numUsedLocalContexts 1, CPUTime 0.033 ms, CPUWaitTime 0.000 ms, calls 3","Init CPUTime":"0.001 ms","Init CPUWaitTime":"0.000 ms","InitLocal CPUTime":"0.002 ms","InitLocal CPUWaitTime":"0.000 ms","StateBeforeFinish (~main)":"Cardinality: 342 rows, PredInitState: ValueIdSet: ValueIdSet(kind=Range isSorted=Yes size=342 [32016, 32358)), RowCountEstimation: {exactly 342 rows}, Uses: 1","operatorId":"55"}]]></Details>
+													</RootRelation>
+												</Plan>
+												<Plan ID="5644_op54" Type="Executed" PlanType="Column">
+													<RootRelation ID="5644_op54_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+														<Name><![CDATA[SemiJoinReductionToDataVectorScanAdapterOp]]></Name>
+														<Summary><![CDATA[Converts ValueIdSets into Predicate State Maps of group 11]]></Summary>
+														<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1793000652183844,"end":1793000652183847}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.003</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 14":"numUsedLocalContexts 1, CPUTime 0.003 ms, CPUWaitTime 0.000 ms, calls 1","StateBeforeFinish (~main)":"{ValueIdSet: ValueIdSet(kind=Range isSorted=Yes size=342 [32016, 32358)), RowCountEstimation: {exactly 342 rows}, Uses: 1}","operatorId":"54"}]]></Details>
+														<Child ID="5654_op41_node">
+															<Details><![CDATA[{"ConnectionType":"Logical"}]]></Details>
+														</Child>
+													</RootRelation>
+												</Plan>
+											</InnerPlans>
+										</RootRelation>
+									</Plan>
+								</InnerPlans>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5655_op60" Type="Executed" PlanType="Column">
+							<RootRelation ID="5655_op60_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[ReparFinisher]]></Name>
+								<Summary><![CDATA[Flush the remaining data in the buffers of ReparGatherer]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652184130,"end":1793000652184138}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.003</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 17":"numUsedLocalContexts 1, CPUTime 0.003 ms, CPUWaitTime 0.000 ms, calls 1","operatorId":"60"}]]></Details>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5656_op59" Type="Executed" PlanType="Column">
+							<RootRelation ID="5656_op59_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[ReparProducer]]></Name>
+								<Summary><![CDATA[Produces output after a reparallelization point]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652183890,"end":1793000652184055}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.003</UserCPUTime>
+								<EstimatedOutputCardinality>324</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"2","pipeline 16":"numUsedLocalContexts 1, CPUTime 0.003 ms, CPUWaitTime 0.000 ms, calls 2","pipeline 17":"numUsedLocalContexts 0, CPUTime 0.000 ms, CPUWaitTime 0.000 ms, calls 0","InitLocal CPUTime":"0.001 ms","InitLocal CPUWaitTime":"0.000 ms","Estimated Output Cardinality":"324","Produced Chunk Statistics(rows)":"(171.000 * 2, var: 19321.000)","TaskStats from op: 103":"count = 2, min = 56194ns, avg = 65073ns, max = 73953ns,  25%= 56194ns,  50%= 73953ns,  75%= 73953ns, parentOpId: 58\u000aSampling: \u000aOpId: 58 sampleSize: 32 elapsedTimeInNs: 56194 overhead: 0 cpiScalingFactor: 1 currCost: 1756.06 costChangeFactor: 1 TotalCost: 1756.06\u000aDecided to go sequential! m_preferSequentialWithSampling: 0 sampler.hasDecidedParallel(): 0 globalTaskSize: 143 tasksToWorkerRatio: 4 outputPerThread: 342 totalEstimatedDataSizeInBufferPerThread: 1368 m_bufferSize: 3072 outPerPartition: 342 avgDataPerRow: 4\u000aOpId: 58 sampleSize: 310 elapsedTimeInNs: 73953 overhead: 0 cpiScalingFactor: 1 currCost: 238.558 costChangeFactor: 0.864151 TotalCost: 238.558\u000aOpId: 58 Sampling is finished. TaskSize: 1047 sumElapsed: 130147 timeBudget: 100000 totalCost: 238.558 cost limit: 3.59677 minCost < costLimit: 0 hasDecidedSequential: 0\u000aDecided to go sequential! m_preferSequentialWithSampling: 0 sampler.hasDecidedParallel(): 1 globalTaskSize: 1048 tasksToWorkerRatio: 4 outputPerThread: 342 totalEstimatedDataSizeInBufferPerThread: 1368 m_bufferSize: 3072 outPerPartition: 342 avgDataPerRow: 4\u000a","Worker Load Statistics(rows)":"(342.000 * 1, var: 0.000)","operatorId":"59"}]]></Details>
+								<Child ID="5657_op58_node">
+									<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5657_op58" Type="Executed" PlanType="Column">
+							<RootRelation ID="5657_op58_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[ReparGatherer]]></Name>
+								<Summary><![CDATA[Gathers data in a buffer and might schedule tasks when the buffer gets full]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652183887,"end":1793000652184115},{"start":1793000652184132,"end":1793000652184137}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.124</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"2","pipeline 16":"numUsedLocalContexts 1, CPUTime 0.119 ms, CPUWaitTime 0.000 ms, calls 1","pipeline 17":"numUsedLocalContexts 1, CPUTime 0.005 ms, CPUWaitTime 0.000 ms, calls 1","Init CPUTime":"0.001 ms","Init CPUWaitTime":"0.000 ms","InitLocal CPUTime":"0.002 ms","InitLocal CPUWaitTime":"0.000 ms","CompileTimeOutputEstimation":"323.58","Estimated num rows buffered in parallel":"0","Framework Internal Data Size (B)":"0","Input Chunk Statistics(rows)":"(171.500 * 2, var: 29070.250)","Largest TaskSize used":"1048","Memory Allocated":"0.000 MiB","Num Sequential Processing Workers":"1","NumFunctors":"0","NumPartitions":"1","Sequential Processing":"1","Task Size Statistics(rows)":"(171.000 * 2, var: 19321.000)","Worker Load Statistics(rows)":"(343.000 * 1, var: 0.000)","operatorId":"58"}]]></Details>
+								<Child ID="5651_op50_node">
+									<ExecutedOutputCardinality>342</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+								<Child ID="5655_op60_node">
+									<ExecutedOutputCardinality>1</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5658_op6" Type="Executed" PlanType="Column">
+							<RootRelation ID="5658_op6_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[TranslationInfoProviderOp]]></Name>
+								<Summary><![CDATA[]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652182485,"end":1793000652182507}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.021</UserCPUTime>
+								<EstimatedOutputCardinality>2</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 3":"numUsedLocalContexts 1, CPUTime 0.021 ms, CPUWaitTime 0.000 ms, calls 1","Estimated Output Cardinality":"2","Table Constraints":"FACT_TELEMETRY.METRIC_ID[MinMax(0, 3, ValueId)]","operatorId":"6"}]]></Details>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5631_op63" Type="Executed" PlanType="Column">
+							<RootRelation ID="5631_op63_node" Status="NotStarted" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[LlangOperatorWithRetry<LlangInOutOperator>]]></Name>
+								<Summary><![CDATA[Code-generated operator across relations <see next op>]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<UserCPUTime Unit="ms">0.000</UserCPUTime>
+								<EstimatedOutputCardinality>324</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"0","calls":"0","Estimated Output Cardinality":"324"}]]></Details>
+								<Child ID="5656_op59_node">
+									<ExecutedOutputCardinality>342</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5659_op7" Type="Executed" PlanType="Column">
+							<RootRelation ID="5659_op7_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[TranslationInfoCollectorOp]]></Name>
+								<Summary><![CDATA[]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652182505,"end":1793000652182512}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.002</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 3":"numUsedLocalContexts 1, CPUTime 0.002 ms, CPUWaitTime 0.000 ms, calls 1","Finish CPUTime":"0.001 ms","Finish CPUWaitTime":"0.000 ms","operatorId":"7"}]]></Details>
+								<Child ID="5658_op6_node">
+									<ExecutedOutputCardinality>2</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5660_op37" Type="Executed" PlanType="Column">
+							<RootRelation ID="5660_op37_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[MergeIntoPartVidSetOp]]></Name>
+								<Summary><![CDATA[Merge collected columns into PartValueId set]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652183563,"end":1793000652183595}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.003</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 10":"numUsedLocalContexts 1, CPUTime 0.003 ms, CPUWaitTime 0.000 ms, calls 1","Col#0":"PreparedColumn(0), BitVector(sz=342, offset=32016, numSet=342)","operatorId":"37"}]]></Details>
+								<Child ID="5661_op36_node">
+									<Details><![CDATA[{"ConnectionType":"Logical"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5662_op40" Type="Executed" PlanType="Column">
+							<RootRelation ID="5662_op40_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[PartToLocalOp]]></Name>
+								<Summary><![CDATA[Maps PartValueIds back to local ValueIds]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652183586,"end":1793000652183595}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.005</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"2","pipeline 10":"numUsedLocalContexts 1, CPUTime 0.005 ms, CPUWaitTime 0.000 ms, calls 2","TaskStats from op: 101":"count = 1, min = 3746ns, avg = 3746ns, max = 3746ns,  25%= 3746ns,  50%= 3746ns,  75%= 3746ns, parentOpId: 39\u000aSampling: \u000aOpId: 39 sampleSize: 10 elapsedTimeInNs: 3746 overhead: 0 cpiScalingFactor: 1 currCost: 374.6 costChangeFactor: 1 TotalCost: 374.6\u000aOpId: 39 Sampling is finished. TaskSize: 667 sumElapsed: 3746 timeBudget: 18446744073709551615 totalCost: 374.6 cost limit: 2923.97 minCost < costLimit: 1 hasDecidedSequential: 1\u000acalculated cost: 374.6 for op: 39 taskSize: 667 will run in seq: 1 forceParallelization: 0 totalRowCount: 342\u000a","operatorId":"40"}]]></Details>
+								<Child ID="5663_op39_node">
+									<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5654_op41" Type="Executed" PlanType="Column">
+							<RootRelation ID="5654_op41_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[SemiJoinReductionFinalizeMergeOp]]></Name>
+								<Summary><![CDATA[Creates ValueIdSets from BitVectors]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652183810,"end":1793000652183813}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.003</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 11":"numUsedLocalContexts 1, CPUTime 0.003 ms, CPUWaitTime 0.000 ms, calls 1","Column Index 0":"[ValueIdSet(kind=Range isSorted=Yes size=342 [32016, 32358)),ValueIdSet(kind=Range isSorted=Yes size=0 [0, 0)),ValueIdSet(kind=Range isSorted=Yes size=0 [0, 0))]","operatorId":"41"}]]></Details>
+								<Child ID="5662_op40_node">
+									<Details><![CDATA[{"ConnectionType":"Logical"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5664_op38" Type="Executed" PlanType="Column">
+							<RootRelation ID="5664_op38_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[CreateValueIdSetsOp]]></Name>
+								<Summary><![CDATA[Creates ValueIdSets that are filled in a subsequent phase]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652183559,"end":1793000652183595}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.018</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 10":"numUsedLocalContexts 1, CPUTime 0.018 ms, CPUWaitTime 0.000 ms, calls 1","InitLocal CPUTime":"0.002 ms","InitLocal CPUWaitTime":"0.000 ms","Col#0":"PreparedColumn(0), [BitVector(size=32359, numSet=342),BitVector(size=0, numSet=0),BitVector(size=0, numSet=0)]","Table Constraints":"FACT_TELEMETRY.METRIC_ID[MinMax(0, 3, ValueId)]","operatorId":"38"}]]></Details>
+								<Child ID="5660_op37_node">
+									<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5663_op39" Type="Executed" PlanType="Column">
+							<RootRelation ID="5663_op39_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[SemiJoinReductionMergeScheduler]]></Name>
+								<Summary><![CDATA[Schedule Semijoin Reduction Merge Tasks]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652183582,"end":1793000652183595}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.007</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 10":"numUsedLocalContexts 1, CPUTime 0.007 ms, CPUWaitTime 0.000 ms, calls 1","BitVectors":"[<TRexUtils::BitVector size 342 numSet 342>]","operatorId":"39"}]]></Details>
+								<Child ID="5664_op38_node">
+									<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5665_op34" Type="Executed" PlanType="Column">
+							<RootRelation ID="5665_op34_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[LlangOperatorWithRetry<LlangInOutOperator>]]></Name>
+								<Summary><![CDATA[<Materialize: DIM_DATETIME.DATETIME_ID (VALUEID)>; <Materialize: DIM_DATETIME.DATETIME_ID (PARTVALUEID)>]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652182732,"end":1793000652182925},{"start":1793000652183286,"end":1793000652183297}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.030</UserCPUTime>
+								<EstimatedOutputCardinality>29624</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"5","pipeline 8":"numUsedLocalContexts 1, CPUTime 0.020 ms, CPUWaitTime 0.000 ms, calls 3","pipeline 9":"numUsedLocalContexts 1, CPUTime 0.010 ms, CPUWaitTime 0.000 ms, calls 2","InitLocal CPUTime":"0.004 ms","InitLocal CPUWaitTime":"0.000 ms","Estimated Output Cardinality":"29624","JIT cache hit":"yes","JIT compile status":"Compiled (Policy: HighCardinality)","JIT effective line count":"66","JIT opt level":"O2","operatorId":"34"}]]></Details>
+								<Child ID="5666_op34_node">
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5667_op35" Type="Executed" PlanType="Column">
+							<RootRelation ID="5667_op35_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[TranslationOp]]></Name>
+								<Summary><![CDATA[]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652182737,"end":1793000652182944},{"start":1793000652183292,"end":1793000652183555}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.060</UserCPUTime>
+								<EstimatedOutputCardinality>29624</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"5","pipeline 8":"numUsedLocalContexts 1, CPUTime 0.043 ms, CPUWaitTime 0.000 ms, calls 3","pipeline 9":"numUsedLocalContexts 1, CPUTime 0.017 ms, CPUWaitTime 0.000 ms, calls 2","InitLocal CPUTime":"0.002 ms","InitLocal CPUWaitTime":"0.000 ms","OnTaskEnd CPUTime":"0.050 ms","OnTaskEnd CPUWaitTime":"0.000 ms","Estimated Output Cardinality":"29624","Memory Allocated":"0.004 MiB","operatorId":"35"}]]></Details>
+								<Child ID="5659_op7_node">
+									<Details><![CDATA[{"ConnectionType":"Logical"}]]></Details>
+								</Child>
+								<Child ID="5665_op34_node">
+									<ExecutedOutputCardinality>1440</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5661_op36" Type="Executed" PlanType="Column">
+							<RootRelation ID="5661_op36_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[SemiJoinReductionCollectOp]]></Name>
+								<Summary><![CDATA[SemiJoinReduction Collection]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652182740,"end":1793000652182944},{"start":1793000652183551,"end":1793000652183555}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.011</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"5","pipeline 8":"numUsedLocalContexts 1, CPUTime 0.007 ms, CPUWaitTime 0.000 ms, calls 3","pipeline 9":"numUsedLocalContexts 1, CPUTime 0.004 ms, CPUWaitTime 0.000 ms, calls 2","InitLocal CPUTime":"0.001 ms","InitLocal CPUWaitTime":"0.000 ms","operatorId":"36"}]]></Details>
+								<Child ID="5667_op35_node">
+									<ExecutedOutputCardinality>1440</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+					</InnerPlans>
+				</RootRelation>
+			</Plan>
+			<Plan ID="5668_group19" Type="Executed" PlanType="Column">
+				<RootRelation ID="5668_group19_node" Status="Finished" Physical="True" TypeName="HEX TABLE SCAN">
+					<Name><![CDATA[TABLE SCAN]]></Name>
+					<Summary><![CDATA[FILTER CONDITION: DIM_DATETIME.YEAR = 2026 AND DIM_DATETIME.MONTH = 10 (DETAIL: (([SCAN] DIM_DATETIME.MONTH = 10) AND ([SCAN] DIM_DATETIME.YEAR = 2026)))]]></Summary>
+					<TableType><![CDATA[COLUMN TABLE]]></TableType>
+					<Schema><![CDATA[IOT_DEVICE_ANALYTICS_HDI_DB_1]]></Schema>
+					<ObjectName><![CDATA[DIM_DATETIME]]></ObjectName>
+					<ExecutionTime>
+						<Timestamps>[{"Pop":[{"start":1793000652182515,"end":1793000652183299}]}]</Timestamps>
+					</ExecutionTime>
+					<UserCPUTime Unit="ms">0.565</UserCPUTime>
+					<Details><![CDATA[{"max numUsedLocalContexts":"1","Active Table Fragments":"DIM_DATETIME~main","Estimated Output Cardinality":"29624","Filter":"(DIM_DATETIME.MONTH (INT) = Int[10] AND DIM_DATETIME.YEAR (INT) = Int[2026])","Memory Allocated":"0.004 MiB","Output Spec":"[DocId, ValueId] DATETIME_ID BIGINT","Runtime constant condition":"<empty>"}]]></Details>
+					<InnerPlans>
+						<Plan ID="5669_group0" Type="Executed" PlanType="Column">
+							<RootRelation ID="5669_group0_node" Status="Finished" Physical="True" TypeName="HEX GROUP">
+								<Name><![CDATA[TableScanControl]]></Name>
+								<Summary><![CDATA[]]></Summary>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652182515,"end":1793000652182708}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.057</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","LogicalGroupId":"0"}]]></Details>
+								<InnerPlans>
+									<Plan ID="5670_op13" Type="Executed" PlanType="Column">
+										<RootRelation ID="5670_op13_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+											<Name><![CDATA[TableScanScheduleOp]]></Name>
+											<Summary><![CDATA[Schedule table scan tasks on IOT_DEVICE_ANALYTICS_HDI_DB_1.DIM_DATETIME of group 0]]></Summary>
+											<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+											<ExecutionTime>
+												<Timestamps>[{"Pop":[{"start":1793000652182710,"end":1793000652183102}]}]</Timestamps>
+											</ExecutionTime>
+											<UserCPUTime Unit="ms">0.049</UserCPUTime>
+											<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 8":"numUsedLocalContexts 1, CPUTime 0.049 ms, CPUWaitTime 0.000 ms, calls 1","InitLocal CPUTime":"0.031 ms","InitLocal CPUWaitTime":"0.000 ms","operatorId":"13"}]]></Details>
+										</RootRelation>
+									</Plan>
+									<Plan ID="5671_op9" Type="Executed" PlanType="Column">
+										<RootRelation ID="5671_op9_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+											<Name><![CDATA[OpenFragmentsControlOp]]></Name>
+											<Summary><![CDATA[]]></Summary>
+											<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+											<ExecutionTime>
+												<Timestamps>[{"Pop":[{"start":1793000652182515,"end":1793000652182519}]}]</Timestamps>
+											</ExecutionTime>
+											<UserCPUTime Unit="ms">0.003</UserCPUTime>
+											<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 5":"numUsedLocalContexts 1, CPUTime 0.003 ms, CPUWaitTime 0.000 ms, calls 1","operatorId":"9"}]]></Details>
+										</RootRelation>
+									</Plan>
+									<Plan ID="5672_op11" Type="Executed" PlanType="Column">
+										<RootRelation ID="5672_op11_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+											<Name><![CDATA[TableScanInitScheduleOp]]></Name>
+											<Summary><![CDATA[Schedule table scan initialization tasks on IOT_DEVICE_ANALYTICS_HDI_DB_1.DIM_DATETIME of group 0]]></Summary>
+											<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+											<ExecutionTime>
+												<Timestamps>[{"Pop":[{"start":1793000652182524,"end":1793000652182692}]}]</Timestamps>
+											</ExecutionTime>
+											<UserCPUTime Unit="ms">0.002</UserCPUTime>
+											<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 6":"numUsedLocalContexts 1, CPUTime 0.002 ms, CPUWaitTime 0.000 ms, calls 1","operatorId":"11"}]]></Details>
+										</RootRelation>
+									</Plan>
+									<Plan ID="5673_op10" Type="Executed" PlanType="Column">
+										<RootRelation ID="5673_op10_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+											<Name><![CDATA[OpenFragmentsOp<0u>]]></Name>
+											<Summary><![CDATA[Open Fragments IOT_DEVICE_ANALYTICS_HDI_DB_1.DIM_DATETIME~main, ~delta1, ~delta2]]></Summary>
+											<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+											<ExecutionTime>
+												<Timestamps>[{"Pop":[{"start":1793000652182518,"end":1793000652182519}]}]</Timestamps>
+											</ExecutionTime>
+											<UserCPUTime Unit="ms">0.001</UserCPUTime>
+											<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 5":"numUsedLocalContexts 1, CPUTime 0.001 ms, CPUWaitTime 0.000 ms, calls 1","operatorId":"10"}]]></Details>
+											<Child ID="5671_op9_node">
+												<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+												<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+											</Child>
+										</RootRelation>
+									</Plan>
+									<Plan ID="5674_op12" Type="Executed" PlanType="Column">
+										<RootRelation ID="5674_op12_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+											<Name><![CDATA[TableScanIndexLookupScheduleOp]]></Name>
+											<Summary><![CDATA[Schedule table scan index lookup tasks on IOT_DEVICE_ANALYTICS_HDI_DB_1.DIM_DATETIME]]></Summary>
+											<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+											<ExecutionTime>
+												<Timestamps>[{"Pop":[{"start":1793000652182696,"end":1793000652182708}]}]</Timestamps>
+											</ExecutionTime>
+											<UserCPUTime Unit="ms">0.002</UserCPUTime>
+											<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 7":"numUsedLocalContexts 1, CPUTime 0.002 ms, CPUWaitTime 0.000 ms, calls 1","operatorId":"12"}]]></Details>
+										</RootRelation>
+									</Plan>
+								</InnerPlans>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5675_group1" Type="Executed" PlanType="Column">
+							<RootRelation ID="5675_group1_node" Status="Finished" Physical="True" TypeName="HEX GROUP">
+								<Name><![CDATA[DIM_DATETIME[~main, ~delta1, ~delta2]]]></Name>
+								<Summary><![CDATA[(DIM_DATETIME.MONTH (INT) = Int[10] AND DIM_DATETIME.YEAR (INT) = Int[2026])]]></Summary>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652182526,"end":1793000652183101}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.443</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","Active Table Fragments":"DIM_DATETIME~main","LogicalGroupId":"1"}]]></Details>
+								<InnerPlans>
+									<Plan ID="5676_group4" Type="Executed" PlanType="Column">
+										<RootRelation ID="5676_group4_node" Status="Finished" Physical="True" TypeName="HEX GROUP">
+											<Name><![CDATA[AND]]></Name>
+											<Summary><![CDATA[]]></Summary>
+											<ExecutionTime>
+												<Timestamps>[{"Pop":[{"start":1793000652182540,"end":1793000652183101}]}]</Timestamps>
+											</ExecutionTime>
+											<UserCPUTime Unit="ms">0.082</UserCPUTime>
+											<Details><![CDATA[{"max numUsedLocalContexts":"1","Estimated costs ds&dvs":"0","Estimated costs dvl&dl":"0","Estimated exclusive output size":"29624.31936","Estimated exclusive selectivity":"0.044918","Estimated inclusive output size":"29624.31936","Estimated inclusive selectivity":"0.044918","Estimated kurtosis":"Unknown","Estimated previous output size":"659520","Estimated previous selectivity":"1","Estimated row count":"659520","Estimation assumption":"WorstCase","LogicalGroupId":"4","Predicate order":"Free"}]]></Details>
+											<InnerPlans>
+												<Plan ID="5677_op21" Type="Executed" PlanType="Column">
+													<RootRelation ID="5677_op21_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+														<Name><![CDATA[ConjunctionIndexLookupOp]]></Name>
+														<Summary><![CDATA[Operate index lookup pipeline for conjunction of group 4]]></Summary>
+														<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1793000652182701,"end":1793000652182705}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.003</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 7":"numUsedLocalContexts 1, CPUTime 0.003 ms, CPUWaitTime 0.000 ms, calls 1","StateAfterRun (~main)":"{IndexLookupResult: n/a}","operatorId":"21"}]]></Details>
+													</RootRelation>
+												</Plan>
+												<Plan ID="5678_op20" Type="Executed" PlanType="Column">
+													<RootRelation ID="5678_op20_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+														<Name><![CDATA[ConjunctionInitOp]]></Name>
+														<Summary><![CDATA[Operate init pipeline for conjunction of group 4]]></Summary>
+														<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1793000652182540,"end":1793000652182675}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.077</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 6":"numUsedLocalContexts 1, CPUTime 0.077 ms, CPUWaitTime 0.000 ms, calls 1","StateAfterRun (~main)":"{InitPipelineState: {AllowedToSkipDictScan: false, DictScanSkipped: false, RowCountEstimation: {calculated 27568 rows, not more than 46080 rows}, ChunkCapacityBound: 394560, LargestIntermediateResult: 46080}, ConjunctionOpState: {EvaluationOrder: [0, 1]}, ConjunctionInitOpState: {InitPipelineStates: [{AllowedToSkipDictScan: false, DictScanSkipped: false, RowCountEstimation: {exactly 46080 rows}, ChunkCapacityBound: 46080, LargestIntermediateResult: 0}, {AllowedToSkipDictScan: true, DictScanSkipped: false, RowCountEstimation: {exactly 394560 rows}, ChunkCapacityBound: 394560, LargestIntermediateResult: 0}]}}","operatorId":"20"}]]></Details>
+														<Child ID="5679_op25_node">
+															<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+															<Details><![CDATA[{"ConnectionType":"Reversed"}]]></Details>
+														</Child>
+														<Child ID="5680_op23_node">
+															<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+															<Details><![CDATA[{"ConnectionType":"Reversed"}]]></Details>
+														</Child>
+													</RootRelation>
+												</Plan>
+												<Plan ID="5681_op22" Type="Executed" PlanType="Column">
+													<RootRelation ID="5681_op22_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+														<Name><![CDATA[ConjunctionOp]]></Name>
+														<Summary><![CDATA[Operate evaluation pipeline for conjunction of group 4]]></Summary>
+														<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1793000652182751,"end":1793000652183101}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.002</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"6","pipeline 8":"numUsedLocalContexts 1, CPUTime 0.002 ms, CPUWaitTime 0.000 ms, calls 6","operatorId":"22"}]]></Details>
+														<Child ID="5682_op26_node">
+															<ExecutedOutputCardinality>1440</ExecutedOutputCardinality>
+															<Details><![CDATA[{"ConnectionType":"Reversed"}]]></Details>
+														</Child>
+														<Child ID="5683_op24_node">
+															<ExecutedOutputCardinality>46080</ExecutedOutputCardinality>
+															<Details><![CDATA[{"ConnectionType":"Reversed"}]]></Details>
+														</Child>
+													</RootRelation>
+												</Plan>
+											</InnerPlans>
+										</RootRelation>
+									</Plan>
+									<Plan ID="5684_group3" Type="Executed" PlanType="Column">
+										<RootRelation ID="5684_group3_node" Status="Finished" Physical="True" TypeName="HEX GROUP">
+											<Name><![CDATA[Visibility]]></Name>
+											<Summary><![CDATA[Postfilter]]></Summary>
+											<ExecutionTime>
+												<Timestamps>[{"Pop":[{"start":1793000652182528,"end":1793000652183101}]}]</Timestamps>
+											</ExecutionTime>
+											<UserCPUTime Unit="ms">0.035</UserCPUTime>
+											<Details><![CDATA[{"max numUsedLocalContexts":"1","LogicalGroupId":"3"}]]></Details>
+											<InnerPlans>
+												<Plan ID="5685_op18" Type="Executed" PlanType="Column">
+													<RootRelation ID="5685_op18_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+														<Name><![CDATA[PostFilterConjIndexLookupOp]]></Name>
+														<Summary><![CDATA[Operate index lookup pipeline for postfilter of group 3]]></Summary>
+														<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1793000652182699,"end":1793000652182707}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.003</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 7":"numUsedLocalContexts 1, CPUTime 0.003 ms, CPUWaitTime 0.000 ms, calls 1","StateAfterRun (~main)":"{IndexLookupResult: n/a}","operatorId":"18"}]]></Details>
+														<Child ID="5677_op21_node">
+															<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+															<Details><![CDATA[{"ConnectionType":"Reversed"}]]></Details>
+														</Child>
+													</RootRelation>
+												</Plan>
+												<Plan ID="5686_op27" Type="Executed" PlanType="Column">
+													<RootRelation ID="5686_op27_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+														<Name><![CDATA[VisibilityFilterEstimationOp]]></Name>
+														<Summary><![CDATA[Estimate transactional visibility check on IOT_DEVICE_ANALYTICS_HDI_DB_1.DIM_DATETIME~main, ~delta1, ~delta2 of group 3]]></Summary>
+														<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1793000652182530,"end":1793000652182682}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.015</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"2","pipeline 6":"numUsedLocalContexts 1, CPUTime 0.015 ms, CPUWaitTime 0.000 ms, calls 2","StateAfterRun (~main)":"{InitPipelineState: {AllowedToSkipDictScan: false, DictScanSkipped: false, RowCountEstimation: {exactly 659520 rows}, ChunkCapacityBound: 659520, LargestIntermediateResult: 0}}","operatorId":"27"}]]></Details>
+													</RootRelation>
+												</Plan>
+												<Plan ID="5687_op17" Type="Executed" PlanType="Column">
+													<RootRelation ID="5687_op17_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+														<Name><![CDATA[PostFilterConjInitOp]]></Name>
+														<Summary><![CDATA[Operate init pipeline for postfilter of group 3]]></Summary>
+														<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1793000652182528,"end":1793000652182688}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.010</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 6":"numUsedLocalContexts 1, CPUTime 0.010 ms, CPUWaitTime 0.000 ms, calls 1","StateAfterRun (~main)":"{InitPipelineState: {AllowedToSkipDictScan: false, DictScanSkipped: false, RowCountEstimation: {calculated 27568 rows, not more than 46080 rows}, ChunkCapacityBound: 394560, LargestIntermediateResult: 46080}}","operatorId":"17"}]]></Details>
+														<Child ID="5678_op20_node">
+															<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+															<Details><![CDATA[{"ConnectionType":"Reversed"}]]></Details>
+														</Child>
+														<Child ID="5686_op27_node">
+															<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+															<Details><![CDATA[{"ConnectionType":"Reversed"}]]></Details>
+														</Child>
+													</RootRelation>
+												</Plan>
+												<Plan ID="5688_op28" Type="Executed" PlanType="Column">
+													<RootRelation ID="5688_op28_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+														<Name><![CDATA[VisibilityFilterOp]]></Name>
+														<Summary><![CDATA[Check transactional visibility on IOT_DEVICE_ANALYTICS_HDI_DB_1.DIM_DATETIME~main, ~delta1, ~delta2 of group 3]]></Summary>
+														<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1793000652182869,"end":1793000652182871}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.002</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 8":"numUsedLocalContexts 1, CPUTime 0.002 ms, CPUWaitTime 0.000 ms, calls 1","operatorId":"28"}]]></Details>
+													</RootRelation>
+												</Plan>
+												<Plan ID="5689_op19" Type="Executed" PlanType="Column">
+													<RootRelation ID="5689_op19_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+														<Name><![CDATA[PostFilterConjOp]]></Name>
+														<Summary><![CDATA[Operate evaluation pipeline for postfilter of group 3]]></Summary>
+														<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1793000652182749,"end":1793000652183101}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.005</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"6","pipeline 8":"numUsedLocalContexts 1, CPUTime 0.005 ms, CPUWaitTime 0.000 ms, calls 6","operatorId":"19"}]]></Details>
+														<Child ID="5681_op22_node">
+															<ExecutedOutputCardinality>1440</ExecutedOutputCardinality>
+															<Details><![CDATA[{"ConnectionType":"Reversed"}]]></Details>
+														</Child>
+														<Child ID="5688_op28_node">
+															<ExecutedOutputCardinality>1440</ExecutedOutputCardinality>
+															<Details><![CDATA[{"ConnectionType":"Reversed"}]]></Details>
+														</Child>
+													</RootRelation>
+												</Plan>
+											</InnerPlans>
+										</RootRelation>
+									</Plan>
+									<Plan ID="5690_group6" Type="Executed" PlanType="Column">
+										<RootRelation ID="5690_group6_node" Status="Finished" Physical="True" TypeName="HEX GROUP">
+											<Name><![CDATA[DIM_DATETIME.YEAR (INT) = Int[2026]]]></Name>
+											<Summary><![CDATA[Scan]]></Summary>
+											<ExecutionTime>
+												<Timestamps>[{"Pop":[{"start":1793000652182592,"end":1793000652183099}]}]</Timestamps>
+											</ExecutionTime>
+											<UserCPUTime Unit="ms">0.017</UserCPUTime>
+											<Details><![CDATA[{"max numUsedLocalContexts":"1","Assigned index in parent":"1","Estimated costs ds&dvs":"296114.32147072","Estimated costs dvl&dl":"1050658.6189720319","Estimated distinct count":"2","Estimated exclusive output size":"400328.64","Estimated exclusive selectivity":"0.607","Estimated inclusive output size":"48804.479999999996","Estimated inclusive selectivity":"0.074","Estimated kurtosis":"Flat","Estimated null count":"0","Estimated previous output size":"48804.479999999996","Estimated previous selectivity":"0.074","Estimated row count":"659520","Estimated top value counts":"[394560, 264960]","Estimation assumption":"WorstCase","LogicalGroupId":"6","Predicate order":"Free"}]]></Details>
+											<InnerPlans>
+												<Plan ID="5679_op25" Type="Executed" PlanType="Column">
+													<RootRelation ID="5679_op25_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+														<Name><![CDATA[EqualDictScanOp]]></Name>
+														<Summary><![CDATA[Dictionary scan on IOT_DEVICE_ANALYTICS_HDI_DB_1.DIM_DATETIME~main, ~delta1, ~delta2.YEAR of group 6]]></Summary>
+														<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1793000652182592,"end":1793000652182601}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.009</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 6":"numUsedLocalContexts 1, CPUTime 0.009 ms, CPUWaitTime 0.000 ms, calls 1","StateAfterRun (~main)":"{PredInitState: ValueIdSet: ValueIdSet(kind=Range isSorted=Yes size=1 [1, 2)), RowCountEstimation: {exactly 394560 rows}, Uses: 1, InitPipelineState: {AllowedToSkipDictScan: true, DictScanSkipped: false, RowCountEstimation: {exactly 394560 rows}, ChunkCapacityBound: 394560, LargestIntermediateResult: 0}}","operatorId":"25"}]]></Details>
+													</RootRelation>
+												</Plan>
+												<Plan ID="5682_op26" Type="Executed" PlanType="Column">
+													<RootRelation ID="5682_op26_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+														<Name><![CDATA[PredicateOp]]></Name>
+														<Summary><![CDATA[Data vector scan/lookup on IOT_DEVICE_ANALYTICS_HDI_DB_1.DIM_DATETIME~main, ~delta1, ~delta2.YEAR of group 6]]></Summary>
+														<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1793000652182714,"end":1793000652183099}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.008</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"2","pipeline 8":"numUsedLocalContexts 1, CPUTime 0.008 ms, CPUWaitTime 0.000 ms, calls 2","Init CPUTime":"0.001 ms","Init CPUWaitTime":"0.000 ms","InitLocal CPUTime":"0.001 ms","InitLocal CPUWaitTime":"0.000 ms","StateBeforeFinish (~main)":"Cardinality: 1440 rows, PredInitState: ValueIdSet: ValueIdSet(kind=Range isSorted=Yes size=1 [1, 2)), RowCountEstimation: {exactly 394560 rows}, Uses: 1","operatorId":"26"}]]></Details>
+														<Child ID="5683_op24_node">
+															<Details><![CDATA[{"ConnectionType":"Logical"}]]></Details>
+														</Child>
+													</RootRelation>
+												</Plan>
+											</InnerPlans>
+										</RootRelation>
+									</Plan>
+									<Plan ID="5691_group2" Type="Executed" PlanType="Column">
+										<RootRelation ID="5691_group2_node" Status="Finished" Physical="True" TypeName="HEX GROUP">
+											<Name><![CDATA[FragmentScan]]></Name>
+											<Summary><![CDATA[]]></Summary>
+											<ExecutionTime>
+												<Timestamps>[{"Pop":[{"start":1793000652182526,"end":1793000652183101}]}]</Timestamps>
+											</ExecutionTime>
+											<UserCPUTime Unit="ms">0.010</UserCPUTime>
+											<Details><![CDATA[{"max numUsedLocalContexts":"1","Active Table Fragments":"DIM_DATETIME~main","LogicalGroupId":"2"}]]></Details>
+											<InnerPlans>
+												<Plan ID="5692_op16" Type="Executed" PlanType="Column">
+													<RootRelation ID="5692_op16_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+														<Name><![CDATA[FragmentScanOp_RpRp]]></Name>
+														<Summary><![CDATA[Operate evaluation pipeline for IOT_DEVICE_ANALYTICS_HDI_DB_1.DIM_DATETIME~main, ~delta1, ~delta2 of group 2]]></Summary>
+														<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1793000652182747,"end":1793000652183101}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.002</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"4","pipeline 8":"numUsedLocalContexts 1, CPUTime 0.002 ms, CPUWaitTime 0.000 ms, calls 4","TaskStats from op: 99":"count = 3, min = 1334ns, avg = 7906ns, max = 20547ns,  25%= 1334ns,  50%= 1839ns,  75%= 20547ns, parentOpId: 13\u000aSampling: \u000aOpId: 13 sampleSize: 255 elapsedTimeInNs: 20547 overhead: 0 cpiScalingFactor: 1 currCost: 80.5764 costChangeFactor: 1 TotalCost: 80.5764\u000aOpId: 13 sampleSize: 512 elapsedTimeInNs: 1839 overhead: 0 cpiScalingFactor: 1 currCost: 3.59179 costChangeFactor: 0.955423 TotalCost: 3.59179\u000aOpId: 13 sampleSize: 1024 elapsedTimeInNs: 1334 overhead: 0 cpiScalingFactor: 1 currCost: 1.30273 costChangeFactor: 0.637302 TotalCost: 1.30273\u000aOpId: 13 Sampling is finished. TaskSize: 191904 sumElapsed: 23720 timeBudget: 50000 totalCost: 1.30273 cost limit: 1.51625 minCost < costLimit: 1 hasDecidedSequential: 1\u000acalculated cost: 1.30273 for op: 13 taskSize: 191904 will run in seq: 1 forceParallelization: 0 totalRowCount: 659520\u000a","operatorId":"16"}]]></Details>
+														<Child ID="5670_op13_node">
+															<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+															<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+														</Child>
+														<Child ID="5689_op19_node">
+															<ExecutedOutputCardinality>1440</ExecutedOutputCardinality>
+															<Details><![CDATA[{"ConnectionType":"Reversed"}]]></Details>
+														</Child>
+													</RootRelation>
+												</Plan>
+												<Plan ID="5693_op15" Type="Executed" PlanType="Column">
+													<RootRelation ID="5693_op15_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+														<Name><![CDATA[FragmentScanIndexLookupOp]]></Name>
+														<Summary><![CDATA[Operate index lookup pipeline for IOT_DEVICE_ANALYTICS_HDI_DB_1.DIM_DATETIME~main, ~delta1, ~delta2 of group 2]]></Summary>
+														<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1793000652182698,"end":1793000652182708}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.002</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 7":"numUsedLocalContexts 1, CPUTime 0.002 ms, CPUWaitTime 0.000 ms, calls 1","StateAfterRun (~main)":"{IndexLookupResult: n/a}","operatorId":"15"}]]></Details>
+														<Child ID="5674_op12_node">
+															<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+															<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+														</Child>
+														<Child ID="5685_op18_node">
+															<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+															<Details><![CDATA[{"ConnectionType":"Reversed"}]]></Details>
+														</Child>
+													</RootRelation>
+												</Plan>
+												<Plan ID="5694_op14" Type="Executed" PlanType="Column">
+													<RootRelation ID="5694_op14_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+														<Name><![CDATA[FragmentScanInitOp]]></Name>
+														<Summary><![CDATA[Operate init pipeline for IOT_DEVICE_ANALYTICS_HDI_DB_1.DIM_DATETIME~main, ~delta1, ~delta2 of group 2]]></Summary>
+														<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1793000652182526,"end":1793000652182692}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.006</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 6":"numUsedLocalContexts 1, CPUTime 0.006 ms, CPUWaitTime 0.000 ms, calls 1","StateAfterRun (~main)":"{InitPipelineState: {AllowedToSkipDictScan: false, DictScanSkipped: false, RowCountEstimation: {calculated 27568 rows, not more than 46080 rows}, ChunkCapacityBound: 394560, LargestIntermediateResult: 46080}, Fragment Cardinality: 659520 rows}","operatorId":"14"}]]></Details>
+														<Child ID="5672_op11_node">
+															<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+															<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+														</Child>
+														<Child ID="5687_op17_node">
+															<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+															<Details><![CDATA[{"ConnectionType":"Reversed"}]]></Details>
+														</Child>
+													</RootRelation>
+												</Plan>
+											</InnerPlans>
+										</RootRelation>
+									</Plan>
+									<Plan ID="5695_group5" Type="Executed" PlanType="Column">
+										<RootRelation ID="5695_group5_node" Status="Finished" Physical="True" TypeName="HEX GROUP">
+											<Name><![CDATA[DIM_DATETIME.MONTH (INT) = Int[10]]]></Name>
+											<Summary><![CDATA[Scan]]></Summary>
+											<ExecutionTime>
+												<Timestamps>[{"Pop":[{"start":1793000652182542,"end":1793000652183101}]}]</Timestamps>
+											</ExecutionTime>
+											<UserCPUTime Unit="ms">0.299</UserCPUTime>
+											<Details><![CDATA[{"max numUsedLocalContexts":"1","Assigned index in parent":"0","Estimated costs ds&dvs":"1304218.9651201845","Estimated costs dvl&dl":"11951861.275007999","Estimated distinct count":"12","Estimated exclusive output size":"48804.479999999996","Estimated exclusive selectivity":"0.074","Estimated inclusive output size":"48804.479999999996","Estimated inclusive selectivity":"0.074","Estimated kurtosis":"Flat","Estimated null count":"0","Estimated previous output size":"659520","Estimated previous selectivity":"1","Estimated row count":"659520","Estimated top value counts":"[89280, 89280, 86400, 46080, 44640, 44640, 44640, 44640, 43200, 43200]","Estimation assumption":"WorstCase","LogicalGroupId":"5","Predicate order":"Free"}]]></Details>
+											<InnerPlans>
+												<Plan ID="5680_op23" Type="Executed" PlanType="Column">
+													<RootRelation ID="5680_op23_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+														<Name><![CDATA[EqualDictScanOp]]></Name>
+														<Summary><![CDATA[Dictionary scan on IOT_DEVICE_ANALYTICS_HDI_DB_1.DIM_DATETIME~main, ~delta1, ~delta2.MONTH of group 5]]></Summary>
+														<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1793000652182542,"end":1793000652182591}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.049</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 6":"numUsedLocalContexts 1, CPUTime 0.049 ms, CPUWaitTime 0.000 ms, calls 1","StateAfterRun (~main)":"{PredInitState: ValueIdSet: ValueIdSet(kind=Range isSorted=Yes size=1 [9, 10)), RowCountEstimation: {exactly 46080 rows}, Uses: 1, InitPipelineState: {AllowedToSkipDictScan: false, DictScanSkipped: false, RowCountEstimation: {exactly 46080 rows}, ChunkCapacityBound: 46080, LargestIntermediateResult: 0}}","operatorId":"23"}]]></Details>
+													</RootRelation>
+												</Plan>
+												<Plan ID="5683_op24" Type="Executed" PlanType="Column">
+													<RootRelation ID="5683_op24_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+														<Name><![CDATA[PredicateOp]]></Name>
+														<Summary><![CDATA[Data vector scan/lookup on IOT_DEVICE_ANALYTICS_HDI_DB_1.DIM_DATETIME~main, ~delta1, ~delta2.MONTH of group 5]]></Summary>
+														<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+														<ExecutionTime>
+															<Timestamps>[{"Pop":[{"start":1793000652182718,"end":1793000652183101}]}]</Timestamps>
+														</ExecutionTime>
+														<UserCPUTime Unit="ms">0.250</UserCPUTime>
+														<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"6","pipeline 8":"numUsedLocalContexts 1, CPUTime 0.250 ms, CPUWaitTime 0.000 ms, calls 6","Init CPUTime":"0.001 ms","Init CPUWaitTime":"0.000 ms","InitLocal CPUTime":"0.001 ms","InitLocal CPUWaitTime":"0.000 ms","StateBeforeFinish (~main)":"Cardinality: 46080 rows, PredInitState: ValueIdSet: ValueIdSet(kind=Range isSorted=Yes size=1 [9, 10)), RowCountEstimation: {exactly 46080 rows}, Uses: 1","operatorId":"24"}]]></Details>
+													</RootRelation>
+												</Plan>
+											</InnerPlans>
+										</RootRelation>
+									</Plan>
+								</InnerPlans>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5696_op31" Type="Executed" PlanType="Column">
+							<RootRelation ID="5696_op31_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[ReparFinisher]]></Name>
+								<Summary><![CDATA[Flush the remaining data in the buffers of ReparGatherer]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652183277,"end":1793000652183299}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.002</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"1","pipeline 9":"numUsedLocalContexts 1, CPUTime 0.002 ms, CPUWaitTime 0.000 ms, calls 1","operatorId":"31"}]]></Details>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5666_op34" Type="Executed" PlanType="Column">
+							<RootRelation ID="5666_op34_node" Status="NotStarted" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[LlangOperatorWithRetry<LlangInOutOperator>]]></Name>
+								<Summary><![CDATA[Code-generated operator across relations <see next op>]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<UserCPUTime Unit="ms">0.000</UserCPUTime>
+								<EstimatedOutputCardinality>29624</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"0","calls":"0","Estimated Output Cardinality":"29624"}]]></Details>
+								<Child ID="5697_op30_node">
+									<ExecutedOutputCardinality>1440</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5697_op30" Type="Executed" PlanType="Column">
+							<RootRelation ID="5697_op30_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[ReparProducer]]></Name>
+								<Summary><![CDATA[Produces output after a reparallelization point]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652182726,"end":1793000652182925},{"start":1793000652183285,"end":1793000652183299}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.007</UserCPUTime>
+								<EstimatedOutputCardinality>29624</EstimatedOutputCardinality>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"4","pipeline 8":"numUsedLocalContexts 1, CPUTime 0.004 ms, CPUWaitTime 0.000 ms, calls 3","pipeline 9":"numUsedLocalContexts 1, CPUTime 0.003 ms, CPUWaitTime 0.000 ms, calls 1","InitLocal CPUTime":"0.001 ms","InitLocal CPUWaitTime":"0.000 ms","Estimated Output Cardinality":"29624","Produced Chunk Statistics(rows)":"(288.000 * 5, var: 59893.200)","TaskStats from op: 100":"count = 3, min = 8687ns, avg = 21235ns, max = 29548ns,  25%= 8687ns,  50%= 25472ns,  75%= 29548ns, parentOpId: 29\u000aSampling: \u000aOpId: 29 sampleSize: 32 elapsedTimeInNs: 29548 overhead: 0 cpiScalingFactor: 1 currCost: 923.375 costChangeFactor: 1 TotalCost: 923.375\u000aOpId: 29 sampleSize: 81 elapsedTimeInNs: 8687 overhead: 0 cpiScalingFactor: 1 currCost: 107.246 costChangeFactor: 0.883853 TotalCost: 107.246\u000aOpId: 29 sampleSize: 699 elapsedTimeInNs: 25472 overhead: 0 cpiScalingFactor: 1 currCost: 36.4406 costChangeFactor: 0.660217 TotalCost: 36.4406\u000a","Worker Load Statistics(rows)":"(1440.000 * 1, var: 0.000)","operatorId":"30"}]]></Details>
+								<Child ID="5698_op29_node">
+									<ExecutedOutputCardinality>0</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+						<Plan ID="5698_op29" Type="Executed" PlanType="Column">
+							<RootRelation ID="5698_op29_node" Status="Finished" Mode="Expert" Physical="True" TypeName="HEX OPERATOR">
+								<Name><![CDATA[ReparGatherer]]></Name>
+								<Summary><![CDATA[Gathers data in a buffer and might schedule tasks when the buffer gets full]]></Summary>
+								<Location><![CDATA[123d8d0c-16b9-4011-9f24-1035bd075306-d4bc8:30040]]></Location>
+								<ExecutionTime>
+									<Timestamps>[{"Pop":[{"start":1793000652182721,"end":1793000652182946},{"start":1793000652183279,"end":1793000652183299}]}]</Timestamps>
+								</ExecutionTime>
+								<UserCPUTime Unit="ms">0.056</UserCPUTime>
+								<Details><![CDATA[{"max numUsedLocalContexts":"1","calls":"3","pipeline 8":"numUsedLocalContexts 1, CPUTime 0.052 ms, CPUWaitTime 0.000 ms, calls 2","pipeline 9":"numUsedLocalContexts 1, CPUTime 0.004 ms, CPUWaitTime 0.000 ms, calls 1","Init CPUTime":"0.002 ms","Init CPUWaitTime":"0.000 ms","InitLocal CPUTime":"0.002 ms","InitLocal CPUWaitTime":"0.000 ms","CompileTimeOutputEstimation":"29624.3","Estimated num rows buffered in parallel":"628","Framework Internal Data Size (B)":"0","Input Chunk Statistics(rows)":"(480.333 * 3, var: 176490.889)","Largest TaskSize used":"6861","Memory Allocated":"0.004 MiB","Num Sequential Processing Workers":"0","NumFunctors":"0","NumPartitions":"1","Sequential Processing":"0","Task Size Statistics(rows)":"(270.667 * 3, var: 92134.889)","Worker Load Statistics(rows)":"(1441.000 * 1, var: 0.000)","operatorId":"29"}]]></Details>
+								<Child ID="5692_op16_node">
+									<ExecutedOutputCardinality>1440</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+								<Child ID="5696_op31_node">
+									<ExecutedOutputCardinality>1</ExecutedOutputCardinality>
+									<Details><![CDATA[{"ConnectionType":"Call"}]]></Details>
+								</Child>
+							</RootRelation>
+						</Plan>
+					</InnerPlans>
+				</RootRelation>
+			</Plan>
+		</InnerPlans>
+	</Relation>
+</Plan>

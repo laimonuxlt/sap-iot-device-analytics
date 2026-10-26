@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_TELEMETRY_CUBE" applyPrivilegeType="SQL_ANALYTIC_PRIVILEGE" dataCategory="CUBE" schemaVersion="3.0" hierarchyGeneration="SQL" cacheInvalidationPeriod="NONE" enforceSqlExecution="false" application="BAS">
+<Calculation:scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Calculation="http://www.sap.com/ndb/BiModelCalculation.ecore" id="CV_TELEMETRY_CUBE" applyPrivilegeType="NONE" dataCategory="CUBE" schemaVersion="3.0" hierarchyGeneration="SQL" cacheInvalidationPeriod="NONE" enforceSqlExecution="false" application="BAS">
 <descriptions defaultDescription="CV_TELEMETRY_CUBE"/>
 <localVariables/>
 <variableMappings/>
@@ -20,14 +20,23 @@
       <viewAttribute id="METRIC_VALUE"/>
     </viewAttributes>
     <calculatedViewAttributes>
-      <calculatedViewAttribute datatype="DECIMAL" id="VALUE_MIN" length="10" scale="2" expressionLanguage="SQL">
+      <calculatedViewAttribute datatype="DECIMAL" id="MAX_METRIC_VALUE" length="10" scale="2" expressionLanguage="SQL">
         <formula>&quot;METRIC_VALUE&quot;</formula>
       </calculatedViewAttribute>
-      <calculatedViewAttribute datatype="DECIMAL" id="VALUE_MAX" length="10" scale="2" expressionLanguage="SQL">
+    
+      <calculatedViewAttribute id="AVG_METRIC_VALUE" datatype="DECIMAL" length="10" scale="2" expressionLanguage="SQL">
+    
         <formula>&quot;METRIC_VALUE&quot;</formula>
+    
       </calculatedViewAttribute>
-      <calculatedViewAttribute datatype="DECIMAL" id="VALUE_CNT" length="10" scale="2" expressionLanguage="SQL">
+    
+      <calculatedViewAttribute id="MIN_METRIC_VALUE" datatype="DECIMAL" length="10" scale="2" expressionLanguage="SQL">
+    
         <formula>&quot;METRIC_VALUE&quot;</formula>
+    
+      </calculatedViewAttribute>
+      <calculatedViewAttribute id="READINGS_COUNT" datatype="BIGINT" expressionLanguage="SQL">
+        <formula>&quot;READING_ID&quot;</formula>
       </calculatedViewAttribute>
     </calculatedViewAttributes>
     <input node="FACT_TELEMETRY"/>
@@ -55,39 +64,30 @@
   </attributes>
   <calculatedAttributes/>
   <baseMeasures>
-    <measure id="METRIC_VALUE" order="1" aggregationType="sum" measureType="simple">
-      <descriptions defaultDescription="Metric Value (sum)"/>
-      <measureMapping columnObjectName="PR_FACT_TELEMETRY" columnName="METRIC_VALUE"/>
-      <exceptionAggregationMetadata/>
-    </measure>
-    <measure id="READING_COUNT" order="2" aggregationType="count" measureType="simple">
+    <measure id="READING_COUNT" order="1" aggregationType="count" measureType="simple">
       <descriptions defaultDescription="Reading Count"/>
-      <measureMapping columnObjectName="PR_FACT_TELEMETRY" columnName="READING_ID"/>
+      <measureMapping columnObjectName="PR_FACT_TELEMETRY" columnName="READINGS_COUNT"/>
       <exceptionAggregationMetadata/>
     </measure>
-    <measure id="MIN_VALUE" order="3" aggregationType="min" measureType="simple">
-      <descriptions defaultDescription="Min Value"/>
-      <measureMapping columnObjectName="PR_FACT_TELEMETRY" columnName="VALUE_MIN"/>
+    <measure id="MIN_METRIC_VALUE" order="2" aggregationType="min" measureType="simple">
+      <descriptions defaultDescription="MIN_METRIC_VALUE"/>
+      <measureMapping columnObjectName="PR_FACT_TELEMETRY" columnName="MIN_METRIC_VALUE"/>
       <exceptionAggregationMetadata/>
     </measure>
-    <measure id="MAX_VALUE" order="4" aggregationType="max" measureType="simple">
+    <measure id="MAX_METRIC_VALUE" order="3" aggregationType="max" measureType="simple">
       <descriptions defaultDescription="Max Value"/>
-      <measureMapping columnObjectName="PR_FACT_TELEMETRY" columnName="VALUE_MAX"/>
+      <measureMapping columnObjectName="PR_FACT_TELEMETRY" columnName="MAX_METRIC_VALUE"/>
       <exceptionAggregationMetadata/>
     </measure>
-    <measure id="VALUE_COUNT" order="5" aggregationType="count" measureType="simple" hidden="true">
-      <descriptions defaultDescription="Value Count (non-NULL, helper)"/>
-      <measureMapping columnObjectName="PR_FACT_TELEMETRY" columnName="VALUE_CNT"/>
+  
+    <measure id="AVG_METRIC_VALUE" order="4" aggregationType="avg" measureType="simple">
+      <descriptions defaultDescription="AVG_METRIC_VALUE"/>
+  
+      <measureMapping columnObjectName="PR_FACT_TELEMETRY" columnName="AVG_METRIC_VALUE"/>
       <exceptionAggregationMetadata/>
     </measure>
   </baseMeasures>
-  <calculatedMeasures>
-    <measure id="AVG_VALUE" order="6" aggregationType="sum" measureType="simple" datatype="DECIMAL" length="10" scale="2" expressionLanguage="COLUMN_ENGINE">
-      <descriptions defaultDescription="Average Value"/>
-      <formula>&quot;METRIC_VALUE&quot; / &quot;VALUE_COUNT&quot;</formula>
-      <exceptionAggregationMetadata/>
-    </measure>
-  </calculatedMeasures>
+  <calculatedMeasures/>
   <restrictedMeasures/>
   <localDimensions/>
   <sharedDimensions>
@@ -143,7 +143,7 @@
     
   
     <shape expanded="true" modelObjectName="PR_FACT_TELEMETRY" modelObjectNameSpace="CalculationView">
-      <upperLeftCorner x="92" y="277"/>
+      <upperLeftCorner x="102" y="261"/>
       <rectangleSize height="30" width="160"/>
     </shape>
     <shape modelObjectName="PR_FACT_TELEMETRY" modelObjectNameSpace="StarJoinViewNodeInput" modelObjectType="repository">
