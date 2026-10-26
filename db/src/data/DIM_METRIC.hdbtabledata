@@ -11,7 +11,7 @@
       "import_columns": [
         "METRIC_ID",
         "METRIC_NAME",
-        "UNIT",
+        "UNIT_OF_MEASURE",
         "MIN_NORMAL",
         "MAX_NORMAL",
         "CRITICAL_LOW",
